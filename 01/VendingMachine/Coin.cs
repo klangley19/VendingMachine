@@ -42,21 +42,45 @@ namespace VendingMachine
         #region public static int GetValueForNickel()
         public static int GetValueForNickel()
         {
-            return 5;
+            int value;
+            if (int.TryParse(Enum.Format(typeof(CoinValue), CoinValue.Nickel, "d"), out value) == true)
+            {
+                return value;
+            }
+            else
+            {
+                throw new InvalidCastException("Error with getting the value for a nickel!");
+            }
         }
         #endregion
 
         #region public static int GetValueForDime()
         public static int GetValueForDime()
         {
-            return 10;
+            int value;
+            if (int.TryParse(Enum.Format(typeof(CoinValue), CoinValue.Dime, "d"), out value) == true)
+            {
+                return value;
+            }
+            else
+            {
+                throw new InvalidCastException("Error with getting the value for a dime!");
+            }
         }
         #endregion
 
         #region public static int GetValueForQuarter()
         public static int GetValueForQuarter()
         {
-            return 25;
+            int value;
+            if (int.TryParse(Enum.Format(typeof(CoinValue), CoinValue.Quarter, "d"), out value) == true)
+            {
+                return value;
+            }
+            else
+            {
+                throw new InvalidCastException("Error with getting the value for a quarter!");
+            }
         }
         #endregion
 
@@ -64,42 +88,91 @@ namespace VendingMachine
         #region public static int GetWeightForNickel()
         public static int GetWeightForNickel()
         {
-            return 4;
+            int value;
+            if (int.TryParse(Enum.Format(typeof(CoinWeight), CoinWeight.Nickel, "d"), out value) == true)
+            {
+                return value;
+            }
+            else
+            {
+                throw new InvalidCastException("Error with getting the weight for a nickel!");
+            }
         }
         #endregion
 
         #region public static int GetWeightForDime()
         public static int GetWeightForDime()
         {
-            return 2;
+            int value;
+            if (int.TryParse(Enum.Format(typeof(CoinWeight), CoinWeight.Dime, "d"), out value) == true)
+            {
+                return value;
+            }
+            else
+            {
+                throw new InvalidCastException("Error with getting the weight for a dime!");
+            }
         }
         #endregion
 
         #region public static int GetWeightForQuarter()
         public static int GetWeightForQuarter()
         {
-            return 5;
+            int value;
+            if (int.TryParse(Enum.Format(typeof(CoinWeight), CoinWeight.Quarter, "d"), out value) == true)
+            {
+                return value;
+            }
+            else
+            {
+                throw new InvalidCastException("Error with getting the weight for a quarter!");
+            }
         }
         #endregion
+
 
         #region public static int GetSizeForNickel()
         public static int GetSizeForNickel()
         {
-            return 4;
+            int value;
+            if (int.TryParse(Enum.Format(typeof(CoinSize), CoinSize.Nickel, "d"), out value) == true)
+            {
+                return value;
+            }
+            else
+            {
+                throw new InvalidCastException("Error with getting the size for a nickel!");
+            }
         }
         #endregion
 
         #region public static int GetSizeForDime()
         public static int GetSizeForDime()
         {
-            return 2;
+            int value;
+            if (int.TryParse(Enum.Format(typeof(CoinSize), CoinSize.Dime, "d"), out value) == true)
+            {
+                return value;
+            }
+            else
+            {
+                throw new InvalidCastException("Error with getting the size for a dime!");
+            }
         }
         #endregion
 
         #region public static int GetSizeForQuarter()
         public static int GetSizeForQuarter()
         {
-            return 5;
+            int value;
+            if (int.TryParse(Enum.Format(typeof(CoinSize), CoinSize.Quarter, "d"), out value) == true)
+            {
+                return value;
+            }
+            else
+            {
+                throw new InvalidCastException("Error with getting the size for a quarter!");
+            }
         }
         #endregion
 
