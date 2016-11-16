@@ -176,25 +176,25 @@ namespace VendingMachine
         }
         #endregion
 
-        #region public static bool IsValidCoin(CoinSize size, CoinWeight weight)
-        public static bool IsValidCoin(CoinSize size, CoinWeight weight)
-        {
-            if (size == CoinSize.Nickel && weight == CoinWeight.Nickel)
-            {
-                return true;
-            }
-            else if (size == CoinSize.Dime && weight == CoinWeight.Dime)
-            {
-                return true;
-            }
-            else if (size == CoinSize.Quarter && weight == CoinWeight.Quarter)
-            {
-                return true;
-            }
-            return false;
+        //#region public static bool IsValidCoin(CoinSize size, CoinWeight weight)
+        //public static bool IsValidCoin(CoinSize size, CoinWeight weight)
+        //{
+        //    if (size == CoinSize.Nickel && weight == CoinWeight.Nickel)
+        //    {
+        //        return true;
+        //    }
+        //    else if (size == CoinSize.Dime && weight == CoinWeight.Dime)
+        //    {
+        //        return true;
+        //    }
+        //    else if (size == CoinSize.Quarter && weight == CoinWeight.Quarter)
+        //    {
+        //        return true;
+        //    }
+        //    return false;
 
-        }
-        #endregion
+        //}
+        //#endregion
 
 
     }
