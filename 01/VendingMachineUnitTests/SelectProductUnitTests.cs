@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using VendingMachine;
+using VendingMachineUnitTests.Mocks;
 
 namespace VendingMachineUnitTests
 {
@@ -28,6 +29,178 @@ namespace VendingMachineUnitTests
             var productCost = Product.GetCostForABagOfChips();
             Assert.AreEqual(50, productCost);
         }
+
+
+        [TestMethod]
+        public void Test_Not_Enough_Money_For_A_Cola()
+        {
+            MockVendingMachineDependency dependency = new MockVendingMachineDependency();
+            VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
+
+            bool result1, result2, result3, result4, result5, result6;
+            bool productDispensed;
+
+            result1 = dependentClass.AddNickelToVendingMachine();
+            result2 = dependentClass.AddDimeToVendingMachine();
+            result3 = dependentClass.AddQuarterToVendingMachine();
+
+            result4 = dependentClass.AddNickelToVendingMachine();
+            result5 = dependentClass.AddDimeToVendingMachine();
+            result6 = dependentClass.AddQuarterToVendingMachine();
+
+            productDispensed = dependentClass.Dispense(Products.Cola);
+
+            Assert.AreEqual(true, result1);
+            Assert.AreEqual(true, result2);
+            Assert.AreEqual(true, result3);
+            Assert.AreEqual(true, result4);
+            Assert.AreEqual(true, result5);
+            Assert.AreEqual(true, result6);
+            Assert.AreEqual(false, productDispensed);
+
+        }
+
+        [TestMethod]
+        public void Test_Enough_Money_For_A_Cola()
+        {
+            MockVendingMachineDependency dependency = new MockVendingMachineDependency();
+            VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
+
+            bool result1, result2, result3, result4, result5, result6, result7, result8, result9;
+            bool productDispensed;
+
+            result1 = dependentClass.AddNickelToVendingMachine();
+            result2 = dependentClass.AddDimeToVendingMachine();
+            result3 = dependentClass.AddQuarterToVendingMachine();
+
+            result4 = dependentClass.AddNickelToVendingMachine();
+            result5 = dependentClass.AddDimeToVendingMachine();
+            result6 = dependentClass.AddQuarterToVendingMachine();
+
+            result7 = dependentClass.AddNickelToVendingMachine();
+            result8 = dependentClass.AddDimeToVendingMachine();
+            result9 = dependentClass.AddQuarterToVendingMachine();
+
+            productDispensed = dependentClass.Dispense(Products.Cola);
+
+            Assert.AreEqual(true, result1);
+            Assert.AreEqual(true, result2);
+            Assert.AreEqual(true, result3);
+            Assert.AreEqual(true, result4);
+            Assert.AreEqual(true, result5);
+            Assert.AreEqual(true, result6);
+            Assert.AreEqual(false, productDispensed);
+
+        }
+
+
+        [TestMethod]
+        public void Test_Not_Enough_Money_For_A_Candy()
+        {
+            MockVendingMachineDependency dependency = new MockVendingMachineDependency();
+            VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
+
+            bool result1, result2, result3;
+            bool productDispensed;
+
+            result1 = dependentClass.AddNickelToVendingMachine();
+            result2 = dependentClass.AddDimeToVendingMachine();
+            result3 = dependentClass.AddQuarterToVendingMachine();
+
+
+            productDispensed = dependentClass.Dispense(Products.Candy);
+
+            Assert.AreEqual(true, result1);
+            Assert.AreEqual(true, result2);
+            Assert.AreEqual(true, result3);
+            Assert.AreEqual(false, productDispensed);
+
+        }
+
+        [TestMethod]
+        public void Test_Enough_Money_For_A_Candy()
+        {
+            MockVendingMachineDependency dependency = new MockVendingMachineDependency();
+            VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
+
+            bool result1, result2, result3, result4, result5, result6;
+            bool productDispensed;
+
+            result1 = dependentClass.AddNickelToVendingMachine();
+            result2 = dependentClass.AddDimeToVendingMachine();
+            result3 = dependentClass.AddQuarterToVendingMachine();
+
+            result4 = dependentClass.AddNickelToVendingMachine();
+            result5 = dependentClass.AddDimeToVendingMachine();
+            result6 = dependentClass.AddQuarterToVendingMachine();
+
+
+            productDispensed = dependentClass.Dispense(Products.Candy);
+
+            Assert.AreEqual(true, result1);
+            Assert.AreEqual(true, result2);
+            Assert.AreEqual(true, result3);
+            Assert.AreEqual(true, result4);
+            Assert.AreEqual(true, result5);
+            Assert.AreEqual(true, result6);
+            Assert.AreEqual(false, productDispensed);
+
+        }
+
+
+        [TestMethod]
+        public void Test_Not_Enough_Money_For_A_Chip_Bag()
+        {
+            MockVendingMachineDependency dependency = new MockVendingMachineDependency();
+            VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
+
+            bool result1, result2, result3;
+            bool productDispensed;
+
+            result1 = dependentClass.AddNickelToVendingMachine();
+            result2 = dependentClass.AddDimeToVendingMachine();
+            result3 = dependentClass.AddQuarterToVendingMachine();
+
+
+            productDispensed = dependentClass.Dispense(Products.Chips);
+
+            Assert.AreEqual(true, result1);
+            Assert.AreEqual(true, result2);
+            Assert.AreEqual(true, result3);
+            Assert.AreEqual(false, productDispensed);
+
+        }
+
+        [TestMethod]
+        public void Test_Enough_Money_For_A_Chip_Bag()
+        {
+            MockVendingMachineDependency dependency = new MockVendingMachineDependency();
+            VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
+
+            bool result1, result2, result3, result4, result5, result6;
+            bool productDispensed;
+
+            result1 = dependentClass.AddNickelToVendingMachine();
+            result2 = dependentClass.AddDimeToVendingMachine();
+            result3 = dependentClass.AddQuarterToVendingMachine();
+
+            result4 = dependentClass.AddNickelToVendingMachine();
+            result5 = dependentClass.AddDimeToVendingMachine();
+            result6 = dependentClass.AddQuarterToVendingMachine();
+
+
+            productDispensed = dependentClass.Dispense(Products.Chips);
+
+            Assert.AreEqual(true, result1);
+            Assert.AreEqual(true, result2);
+            Assert.AreEqual(true, result3);
+            Assert.AreEqual(true, result4);
+            Assert.AreEqual(true, result5);
+            Assert.AreEqual(true, result6);
+            Assert.AreEqual(false, productDispensed);
+
+        }
+
 
     }
 }
