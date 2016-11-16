@@ -137,11 +137,13 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(true, coinDeposited);
         }
 
+
+
         [TestMethod]
         public void Display_Is_Not_Set_Right_For_A_Nickel_Deposited()
         {
-            var coinSizeFromVendingMachine = 4;
-            var coinWeightFromVendingMachine = 4;
+            var coinSizeFromVendingMachine = Coin.GetSizeForNickel();
+            var coinWeightFromVendingMachine = Coin.GetWeightForNickel();
 
             VendingMachine.VendingMachine vm = new VendingMachine.VendingMachine();
             bool coinDeposited = vm.DepositCoin(coinSizeFromVendingMachine, coinWeightFromVendingMachine);
@@ -151,12 +153,11 @@ namespace VendingMachineUnitTests
             Assert.AreEqual("$0.05", strVendingMachineDisplay);
         }
 
-
         [TestMethod]
         public void Display_Is_Not_Set_Right_For_A_Dime_Deposited()
         {
-            var coinSizeFromVendingMachine = 4;
-            var coinWeightFromVendingMachine = 4;
+            var coinSizeFromVendingMachine = Coin.GetSizeForDime();
+            var coinWeightFromVendingMachine = Coin.GetWeightForDime();
 
             VendingMachine.VendingMachine vm = new VendingMachine.VendingMachine();
             bool coinDeposited = vm.DepositCoin(coinSizeFromVendingMachine, coinWeightFromVendingMachine);
@@ -169,8 +170,8 @@ namespace VendingMachineUnitTests
         [TestMethod]
         public void Display_Is_Not_Set_Right_For_A_Quarter_Deposited()
         {
-            var coinSizeFromVendingMachine = 4;
-            var coinWeightFromVendingMachine = 4;
+            var coinSizeFromVendingMachine = Coin.GetSizeForQuarter();
+            var coinWeightFromVendingMachine = Coin.GetWeightForQuarter();
 
             VendingMachine.VendingMachine vm = new VendingMachine.VendingMachine();
             bool coinDeposited = vm.DepositCoin(coinSizeFromVendingMachine, coinWeightFromVendingMachine);
