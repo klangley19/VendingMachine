@@ -6,7 +6,7 @@ using VendingMachine;
 namespace VendingMachineUnitTests
 {
     [TestClass]
-    public class UnitTest1
+    public class AcceptCoinUnitTest
     {
 
         [TestMethod]
@@ -81,7 +81,7 @@ namespace VendingMachineUnitTests
             var coinWeight = Coin.GetWeightForNickel();
             var coinSize = Coin.GetSizeForNickel();
 
-            VendingMachine vm = new VendingMachine();
+            VendingMachine.VendingMachine vm = new VendingMachine.VendingMachine();
             bool result = vm.IsValidCoin(CoinSize.Nickel, CoinWeight.Nickel);
 
             Assert.AreEqual(true, result);
@@ -93,7 +93,7 @@ namespace VendingMachineUnitTests
             var coinWeight = Coin.GetWeightForNickel();
             var coinSize = Coin.GetSizeForNickel();
 
-            VendingMachine vm = new VendingMachine();
+            VendingMachine.VendingMachine vm = new VendingMachine.VendingMachine();
             bool result = vm.IsValidCoin(CoinSize.Dime, CoinWeight.Dime);
 
             Assert.AreEqual(true, result);
@@ -105,7 +105,7 @@ namespace VendingMachineUnitTests
             var coinWeight = Coin.GetWeightForNickel();
             var coinSize = Coin.GetSizeForNickel();
 
-            VendingMachine vm = new VendingMachine();
+            VendingMachine.VendingMachine vm = new VendingMachine.VendingMachine();
             bool result = vm.IsValidCoin(CoinSize.Quarter, CoinWeight.Quarter);
 
             Assert.AreEqual(true, result);
