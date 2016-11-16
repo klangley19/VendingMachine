@@ -64,6 +64,43 @@ namespace VendingMachine
         }
         #endregion
 
+        #region public bool Dispense(Products product)
+        public bool Dispense(Products product)
+        {
+            if (product == Products.Cola)
+            {
+                if (this.ValueInMachine >= Product.GetCostForACola())
+                {
+                    this.ValueInMachine -= Product.GetCostForACola();
+                    return true;
+                }
+                return false;
+            }
+            else if (product == Products.Candy)
+            {
+                if (this.ValueInMachine >= Product.GetCostForACandy())
+                {
+                    this.ValueInMachine -= Product.GetCostForACandy();
+                    return true;
+                }
+                return false;
+            }
+            else if (product == Products.Chips)
+            {
+                if (this.ValueInMachine >= Product.GetCostForABagOfChips())
+                {
+                    this.ValueInMachine -= Product.GetCostForABagOfChips();
+                    return true;
+                }
+                return false;
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException("The Dispense method was called without finding a matching product!");
+            }
+        }
+        #endregion
+
         #region private void UpdateDisplay(int Amount)
         private void UpdateDisplay(int Amount)
         {
@@ -79,5 +116,7 @@ namespace VendingMachine
 
         }
         #endregion
+
+
     }
 }

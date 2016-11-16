@@ -89,7 +89,10 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(true, result4);
             Assert.AreEqual(true, result5);
             Assert.AreEqual(true, result6);
-            Assert.AreEqual(false, productDispensed);
+            Assert.AreEqual(true, result7);
+            Assert.AreEqual(true, result8);
+            Assert.AreEqual(true, result9);
+            Assert.AreEqual(true, productDispensed);
 
         }
 
@@ -143,7 +146,7 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(true, result4);
             Assert.AreEqual(true, result5);
             Assert.AreEqual(true, result6);
-            Assert.AreEqual(false, productDispensed);
+            Assert.AreEqual(true, productDispensed);
 
         }
 
@@ -197,7 +200,7 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(true, result4);
             Assert.AreEqual(true, result5);
             Assert.AreEqual(true, result6);
-            Assert.AreEqual(false, productDispensed);
+            Assert.AreEqual(true, productDispensed);
 
         }
 

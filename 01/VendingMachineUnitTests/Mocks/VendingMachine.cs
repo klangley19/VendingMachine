@@ -18,6 +18,7 @@ namespace VendingMachineUnitTests.Mocks
         bool AddQuarterToVendingMachine();
         int GetVendingMachineCoinValueInPennies();
         string GetVendingMachineDisplay();
+        bool Dispense(Products product);
     }
     #endregion
 
@@ -55,6 +56,12 @@ namespace VendingMachineUnitTests.Mocks
         {
             return this._dependency.GetVendingMachineDisplay();
         }
+
+        public bool Dispense(Products product)
+        {
+            return this._dependency.Dispense(product);
+        }
+
     }
     #endregion
 
@@ -86,6 +93,11 @@ namespace VendingMachineUnitTests.Mocks
         public string GetVendingMachineDisplay()
         {
             return machine.Display;
+        }
+
+        public bool Dispense(Products product)
+        {
+            return machine.Dispense(product);
         }
         #endregion
 
