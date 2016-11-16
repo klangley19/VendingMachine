@@ -75,8 +75,41 @@ namespace VendingMachineUnitTests
         }
 
 
+        [TestMethod]
+        public void Coin_Deposited_Is_A_Nickel()
+        {
+            var coinWeight = Coin.GetWeightForNickel();
+            var coinSize = Coin.GetSizeForNickel();
 
+            VendingMachine vm = new VendingMachine();
+            bool result = vm.IsValidCoin(CoinSize.Nickel, CoinWeight.Nickel);
 
+            Assert.AreEqual(true, result);
+        }
+
+        [TestMethod]
+        public void Coin_Deposited_Is_A_Dime()
+        {
+            var coinWeight = Coin.GetWeightForNickel();
+            var coinSize = Coin.GetSizeForNickel();
+
+            VendingMachine vm = new VendingMachine();
+            bool result = vm.DepositCoin(CoinSize.Dime, CoinWeight.Dime);
+
+            Assert.AreEqual(true, result);
+        }
+
+        [TestMethod]
+        public void Coin_Deposited_Is_A_Quarter()
+        {
+            var coinWeight = Coin.GetWeightForNickel();
+            var coinSize = Coin.GetSizeForNickel();
+
+            VendingMachine vm = new VendingMachine();
+            bool result = vm.DepositCoin(CoinSize.Quarter, CoinWeight.Quarter);
+
+            Assert.AreEqual(true, result);
+        }
 
 
 
