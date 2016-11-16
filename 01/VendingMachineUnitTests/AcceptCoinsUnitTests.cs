@@ -110,99 +110,31 @@ namespace VendingMachineUnitTests
         }
 
 
+        [TestMethod]
+        public void Coin_Deposited_Is_Not_A_Valid_Coin()
+        {
 
-        //[TestMethod]
-        //public void Coin_Deposited_Is_A_Nickel()
-        //{
-        //    var coinWeight = Coin.GetWeightForNickel();
-        //    var coinSize = Coin.GetSizeForNickel();
+            #region coin checking algorithm
+            //the vending machine will know the size and weight for the coin
+            //and call the deposit coin method with these two values 
 
-        //    bool result = Coin.IsValidCoin(CoinSize.Nickel, CoinWeight.Nickel);
+            //the method will validate the coin with the Coin.IsValidCoin() method
 
-        //    Assert.AreEqual(true, result);
-        //}
+            //when the coin is determined to be valid, just need to match the 
+            //size or weight back with a nickel, dime or quarter
+            //to get the value for the coin
 
-        //[TestMethod]
-        //public void Coin_Deposited_Is_A_Dime()
-        //{
-        //    var coinWeight = Coin.GetWeightForNickel();
-        //    var coinSize = Coin.GetSizeForNickel();
+            //then with the value, update the value amount of coins in the
+            //vending machine and the display for the machine
+            #endregion
 
-        //    bool result = Coin.IsValidCoin(CoinSize.Dime, CoinWeight.Dime);
+            var coinSizeFromVendingMachine = 4;
+            var coinWeightFromVendingMachine = 4;
 
-        //    Assert.AreEqual(true, result);
-        //}
+            VendingMachine.VendingMachine vm = new VendingMachine.VendingMachine();
+            bool coinDeposited = vm.DepositCoin(coinSizeFromVendingMachine, coinWeightFromVendingMachine);
 
-        //[TestMethod]
-        //public void Coin_Deposited_Is_A_Quarter()
-        //{
-        //    var coinWeight = Coin.GetWeightForNickel();
-        //    var coinSize = Coin.GetSizeForNickel();
-
-        //    bool result = Coin.IsValidCoin(CoinSize.Quarter, CoinWeight.Quarter);
-
-        //    Assert.AreEqual(true, result);
-        //}
-
-
-        //[TestMethod]
-        //public void Coin_Deposited_Is_Not_A_Valid_Coin()
-        //{
-
-        //    #region coin checking algorithm
-        //    //the vending machine will know the size and weight for the coin
-        //    //and call the deposit coin method with these two values to resolve 
-        //    //the size and weight to a possible matching coin
-
-        //    //the DepositCoin method will evaluate the size to see if it matches
-        //    //either a nickel, dime or quarter, and then it will evaluate the 
-        //    //weight of the coin to see if that is a match with a nickel, dime or
-        //    //quarter
-
-        //    //if the size and weight match with a valid coin, then the IsValidCoin
-        //    //is called with the size and weight enumerated values to ensure they
-        //    //are of the same coin
-        //    #endregion
-
-        //    var coinSizeFromVendingMachine = 4;
-        //    var coinWeightFromVendingMachine = 4;
-
-        //    CoinSize coinSize = CoinSize.Undefined;
-        //    CoinWeight coinWeight = CoinWeight.Undefined;
-
-
-        //    if (coinSizeFromVendingMachine == Coin.GetSizeForNickel())
-        //    {
-        //        coinSize = CoinSize.Nickel;
-        //    }
-        //    else if (coinSizeFromVendingMachine == Coin.GetSizeForDime())
-        //    {
-        //        coinSize = CoinSize.Dime;
-        //    }
-        //    else if (coinSizeFromVendingMachine == Coin.GetSizeForQuarter())
-        //    {
-        //        coinSize = CoinSize.Quarter;
-        //    }
-
-        //    if (coinWeightFromVendingMachine == Coin.GetWeightForNickel())
-        //    {
-        //        coinSize = CoinSize.Nickel;
-        //    }
-        //    else if (coinWeightFromVendingMachine == Coin.GetWeightForDime())
-        //    {
-        //        coinSize = CoinSize.Dime;
-        //    }
-        //    else if (coinWeightFromVendingMachine == Coin.GetWeightForQuarter())
-        //    {
-        //        coinSize = CoinSize.Quarter;
-        //    }
-
-
-
-        //    //VendingMachine.VendingMachine vm = new VendingMachine.VendingMachine();
-        //    //bool coinDeposited = vm.DepositCoin(coinSize, coinWeight);
-
-        //}
+        }
 
 
     }
