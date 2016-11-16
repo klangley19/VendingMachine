@@ -6,6 +6,15 @@ using System.Threading.Tasks;
 
 namespace VendingMachine
 {
+    #region public enum Products
+    public enum Products
+    {
+        Candy = 0,
+        Chips,
+        Cola
+    }
+    #endregion
+
     public static class Product
     {
         #region private static readonly member variables
