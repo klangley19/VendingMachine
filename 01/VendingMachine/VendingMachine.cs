@@ -11,6 +11,7 @@ namespace VendingMachine
         private int ValueInMachine;
         private string DisplayMessage = "INSERT COIN";
 
+
         #region public int DepositedValueInMachine
         public int DepositedValueInMachine
         {
@@ -31,34 +32,28 @@ namespace VendingMachine
         }
         #endregion
 
+
+
         #region public bool DepositCoin(int CoinSize, int CoinWeight)
         public bool DepositCoin(int CoinSize, int CoinWeight)
         {
-            if (Coin.IsValidCoin(CoinSize, CoinWeight))
+            int CoinValue;
+
+            try
             {
-                if (CoinSize == Coin.GetSizeForNickel())
-                {
-                    ValueInMachine += Coin.GetValueForNickel();
-                    this.UpdateDisplay(Coin.GetValueForNickel());
-                    return true;
-                }
-                else if (CoinSize == Coin.GetSizeForDime())
-                {
-                    ValueInMachine += Coin.GetValueForDime();
-                    this.UpdateDisplay(Coin.GetValueForDime());
-                    return true;
-                }
-                else if (CoinSize == Coin.GetSizeForQuarter())
-                {
-                    ValueInMachine += Coin.GetValueForQuarter();
-                    this.UpdateDisplay(Coin.GetValueForQuarter());
-                    return true;
-                }
+                bool returnValue = Coin.DepositCoin(CoinSize, CoinWeight, out CoinValue);
+                this.ValueInMachine += CoinValue;
+                this.UpdateDisplay(CoinValue);
+                return returnValue;
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                //TODO :: something useful like log the error instead of ignoring it
                 return false;
             }
-            else
+            catch (Exception e)
             {
-                //code here to send the invalid coin back in the coin return of the machine
+                //TODO :: something useful like log the error instead of ignoring it
                 return false;
             }
         }

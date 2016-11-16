@@ -200,6 +200,39 @@ namespace VendingMachine
 
 
 
+        #region public bool DepositCoin(int CoinSize, int CoinWeight)
+        public static bool DepositCoin(int CoinSize, int CoinWeight, out int Value)
+        {
+            Value = 0;
+            if (Coin.IsValidCoin(CoinSize, CoinWeight))
+            {
+                if (CoinSize == Coin.GetSizeForNickel())
+                {
+                    Value = Coin.GetValueForNickel();
+                    return true;
+                }
+                else if (CoinSize == Coin.GetSizeForDime())
+                {
+                    Value = Coin.GetValueForDime();
+                    return true;
+                }
+                else if (CoinSize == Coin.GetSizeForQuarter())
+                {
+                    Value = Coin.GetValueForQuarter();
+                    return true;
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException("A coin was considered valid but does not have a matching size for it!");
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        #endregion
+
         #region public static bool IsValidCoin(int size, int weight)
         public static bool IsValidCoin(int size, int weight)
         {
