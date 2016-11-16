@@ -137,6 +137,49 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(true, coinDeposited);
         }
 
+        [TestMethod]
+        public void Display_Is_Not_Set_Right_For_A_Nickel_Deposited()
+        {
+            var coinSizeFromVendingMachine = 4;
+            var coinWeightFromVendingMachine = 4;
+
+            VendingMachine.VendingMachine vm = new VendingMachine.VendingMachine();
+            bool coinDeposited = vm.DepositCoin(coinSizeFromVendingMachine, coinWeightFromVendingMachine);
+            string strVendingMachineDisplay = vm.Display;
+
+            Assert.AreEqual(true, coinDeposited);
+            Assert.AreEqual("$0.05", strVendingMachineDisplay);
+        }
+
+
+        [TestMethod]
+        public void Display_Is_Not_Set_Right_For_A_Dime_Deposited()
+        {
+            var coinSizeFromVendingMachine = 4;
+            var coinWeightFromVendingMachine = 4;
+
+            VendingMachine.VendingMachine vm = new VendingMachine.VendingMachine();
+            bool coinDeposited = vm.DepositCoin(coinSizeFromVendingMachine, coinWeightFromVendingMachine);
+            string strVendingMachineDisplay = vm.Display;
+
+            Assert.AreEqual(true, coinDeposited);
+            Assert.AreEqual("$0.10", strVendingMachineDisplay);
+        }
+
+        [TestMethod]
+        public void Display_Is_Not_Set_Right_For_A_Quarter_Deposited()
+        {
+            var coinSizeFromVendingMachine = 4;
+            var coinWeightFromVendingMachine = 4;
+
+            VendingMachine.VendingMachine vm = new VendingMachine.VendingMachine();
+            bool coinDeposited = vm.DepositCoin(coinSizeFromVendingMachine, coinWeightFromVendingMachine);
+            string strVendingMachineDisplay = vm.Display;
+
+            Assert.AreEqual(true, coinDeposited);
+            Assert.AreEqual("$0.25", strVendingMachineDisplay);
+        }
+
 
     }
 }
