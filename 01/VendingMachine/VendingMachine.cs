@@ -11,6 +11,16 @@ namespace VendingMachine
         private int ValueInMachine;
         private string DisplayMessage = "INSERT COIN";
 
+        #region public int DepositedValueInMachine
+        public int DepositedValueInMachine
+        {
+            get
+            {
+                return this.ValueInMachine;
+            }
+        }
+        #endregion
+
         #region public string Display
         public string Display
         {
