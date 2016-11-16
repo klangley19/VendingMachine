@@ -134,6 +134,7 @@ namespace VendingMachineUnitTests
             VendingMachine.VendingMachine vm = new VendingMachine.VendingMachine();
             bool coinDeposited = vm.DepositCoin(coinSizeFromVendingMachine, coinWeightFromVendingMachine);
 
+            Assert.AreEqual(true, coinDeposited);
         }
 
 
