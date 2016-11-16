@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+using VendingMachine;
+
 namespace VendingMachineUnitTests
 {
     [TestClass]
@@ -8,7 +10,6 @@ namespace VendingMachineUnitTests
     {
 
         [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException))]
         public void A_Coin_Does_Not_Have_A_Nickel_Value_Throws_Invalid_Operation_Exception()
         {
             var coinValue = Coin.GetValueForNickel();
@@ -16,7 +17,6 @@ namespace VendingMachineUnitTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException))]
         public void A_Coin_Does_Not_Have_A_Dime_Value_Throws_Invalid_Operation_Exception()
         {
             var coinValue = Coin.GetValueForDime();
@@ -24,7 +24,6 @@ namespace VendingMachineUnitTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException))]
         public void A_Coin_Does_Not_Have_A_Quarter_Value_Throws_Invalid_Operation_Exception()
         {
             var coinValue = Coin.GetValueForQuarter();
