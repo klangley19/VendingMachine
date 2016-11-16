@@ -8,25 +8,8 @@ namespace VendingMachine
 {
     public class VendingMachine
     {
-        #region public bool IsValidCoin(CoinSize size, CoinWeight weight)
-        public bool IsValidCoin(CoinSize size, CoinWeight weight)
-        {
-            if (size == CoinSize.Nickel && weight == CoinWeight.Nickel)
-            {
-                return true;
-            }
-            else if (size == CoinSize.Dime && weight == CoinWeight.Dime)
-            {
-                return true;
-            }
-            else if (size == CoinSize.Quarter && weight == CoinWeight.Quarter)
-            {
-                return true;
-            }
-            return false;
 
-        }
-        #endregion
+
 
 
 

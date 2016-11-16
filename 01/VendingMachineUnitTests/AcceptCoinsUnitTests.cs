@@ -81,8 +81,7 @@ namespace VendingMachineUnitTests
             var coinWeight = Coin.GetWeightForNickel();
             var coinSize = Coin.GetSizeForNickel();
 
-            VendingMachine.VendingMachine vm = new VendingMachine.VendingMachine();
-            bool result = vm.IsValidCoin(CoinSize.Nickel, CoinWeight.Nickel);
+            bool result = Coin.IsValidCoin(CoinSize.Nickel, CoinWeight.Nickel);
 
             Assert.AreEqual(true, result);
         }
@@ -93,8 +92,7 @@ namespace VendingMachineUnitTests
             var coinWeight = Coin.GetWeightForNickel();
             var coinSize = Coin.GetSizeForNickel();
 
-            VendingMachine.VendingMachine vm = new VendingMachine.VendingMachine();
-            bool result = vm.IsValidCoin(CoinSize.Dime, CoinWeight.Dime);
+            bool result = Coin.IsValidCoin(CoinSize.Dime, CoinWeight.Dime);
 
             Assert.AreEqual(true, result);
         }
@@ -105,8 +103,7 @@ namespace VendingMachineUnitTests
             var coinWeight = Coin.GetWeightForNickel();
             var coinSize = Coin.GetSizeForNickel();
 
-            VendingMachine.VendingMachine vm = new VendingMachine.VendingMachine();
-            bool result = vm.IsValidCoin(CoinSize.Quarter, CoinWeight.Quarter);
+            bool result = Coin.IsValidCoin(CoinSize.Quarter, CoinWeight.Quarter);
 
             Assert.AreEqual(true, result);
         }
