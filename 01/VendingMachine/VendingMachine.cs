@@ -9,7 +9,9 @@ namespace VendingMachine
     public class VendingMachine
     {
         private int ValueInMachine;
+        private string DisplayMessage = "INSERT COIN";
 
+        #region public bool DepositCoin(int CoinSize, int CoinWeight)
         public bool DepositCoin(int CoinSize, int CoinWeight)
         {
             if (Coin.IsValidCoin(CoinSize, CoinWeight))
@@ -36,8 +38,9 @@ namespace VendingMachine
                 //code here to send the invalid coin back in the coin return of the machine
                 return false;
             }
-
-
         }
+        #endregion
+
+
     }
 }
