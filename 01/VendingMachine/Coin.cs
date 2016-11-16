@@ -42,45 +42,21 @@ namespace VendingMachine
         #region public static int GetValueForNickel()
         public static int GetValueForNickel()
         {
-            int value;
-            if (int.TryParse(Enum.Format(typeof(CoinValue), CoinValue.Nickel, "d"), out value) == true)
-            {
-                return value;
-            }
-            else
-            {
-                throw new InvalidCastException("Error with getting the value for a nickel!");
-            }
+            return GetIntegerValueFromEnumeratedValue(CoinValue.Nickel);
         }
         #endregion
 
         #region public static int GetValueForDime()
         public static int GetValueForDime()
         {
-            int value;
-            if (int.TryParse(Enum.Format(typeof(CoinValue), CoinValue.Dime, "d"), out value) == true)
-            {
-                return value;
-            }
-            else
-            {
-                throw new InvalidCastException("Error with getting the value for a dime!");
-            }
+            return GetIntegerValueFromEnumeratedValue(CoinValue.Dime);
         }
         #endregion
 
         #region public static int GetValueForQuarter()
         public static int GetValueForQuarter()
         {
-            int value;
-            if (int.TryParse(Enum.Format(typeof(CoinValue), CoinValue.Quarter, "d"), out value) == true)
-            {
-                return value;
-            }
-            else
-            {
-                throw new InvalidCastException("Error with getting the value for a quarter!");
-            }
+            return GetIntegerValueFromEnumeratedValue(CoinValue.Quarter);
         }
         #endregion
 
@@ -88,45 +64,21 @@ namespace VendingMachine
         #region public static int GetWeightForNickel()
         public static int GetWeightForNickel()
         {
-            int value;
-            if (int.TryParse(Enum.Format(typeof(CoinWeight), CoinWeight.Nickel, "d"), out value) == true)
-            {
-                return value;
-            }
-            else
-            {
-                throw new InvalidCastException("Error with getting the weight for a nickel!");
-            }
+            return GetIntegerValueFromEnumeratedValue(CoinWeight.Nickel);
         }
         #endregion
 
         #region public static int GetWeightForDime()
         public static int GetWeightForDime()
         {
-            int value;
-            if (int.TryParse(Enum.Format(typeof(CoinWeight), CoinWeight.Dime, "d"), out value) == true)
-            {
-                return value;
-            }
-            else
-            {
-                throw new InvalidCastException("Error with getting the weight for a dime!");
-            }
+            return GetIntegerValueFromEnumeratedValue(CoinWeight.Dime);
         }
         #endregion
 
         #region public static int GetWeightForQuarter()
         public static int GetWeightForQuarter()
         {
-            int value;
-            if (int.TryParse(Enum.Format(typeof(CoinWeight), CoinWeight.Quarter, "d"), out value) == true)
-            {
-                return value;
-            }
-            else
-            {
-                throw new InvalidCastException("Error with getting the weight for a quarter!");
-            }
+            return GetIntegerValueFromEnumeratedValue(CoinWeight.Quarter);
         }
         #endregion
 
@@ -134,47 +86,119 @@ namespace VendingMachine
         #region public static int GetSizeForNickel()
         public static int GetSizeForNickel()
         {
-            int value;
-            if (int.TryParse(Enum.Format(typeof(CoinSize), CoinSize.Nickel, "d"), out value) == true)
-            {
-                return value;
-            }
-            else
-            {
-                throw new InvalidCastException("Error with getting the size for a nickel!");
-            }
+            return GetIntegerValueFromEnumeratedValue(CoinSize.Nickel);
         }
         #endregion
 
         #region public static int GetSizeForDime()
         public static int GetSizeForDime()
         {
-            int value;
-            if (int.TryParse(Enum.Format(typeof(CoinSize), CoinSize.Dime, "d"), out value) == true)
-            {
-                return value;
-            }
-            else
-            {
-                throw new InvalidCastException("Error with getting the size for a dime!");
-            }
+            return GetIntegerValueFromEnumeratedValue(CoinSize.Dime);
         }
         #endregion
 
         #region public static int GetSizeForQuarter()
         public static int GetSizeForQuarter()
         {
-            int value;
-            if (int.TryParse(Enum.Format(typeof(CoinSize), CoinSize.Quarter, "d"), out value) == true)
+            return GetIntegerValueFromEnumeratedValue(CoinSize.Quarter);
+        }
+        #endregion
+
+
+        #region private static int GetIntegerValueFromEnumeratedValue(CoinValue Value)
+        private static int GetIntegerValueFromEnumeratedValue(CoinValue Value)
+        {
+            string strValue = string.Empty;
+            if (Value == CoinValue.Nickel)
             {
-                return value;
+                strValue = Enum.Format(typeof(CoinValue), CoinValue.Nickel, "d");
+            }
+            else if (Value == CoinValue.Dime)
+            {
+                strValue = Enum.Format(typeof(CoinValue), CoinValue.Dime, "d");
+            }
+            else if (Value == CoinValue.Quarter)
+            {
+                strValue = Enum.Format(typeof(CoinValue), CoinValue.Quarter, "d");
             }
             else
             {
-                throw new InvalidCastException("Error with getting the size for a quarter!");
+                throw new ArgumentOutOfRangeException("The GetIntegerValueFromEnumeratedValue() was given an invalid argument");
+            }
+
+            return ParseIntegerFromString(strValue);
+
+        }
+        #endregion
+
+        #region private static int GetIntegerValueFromEnumeratedValue(CoinWeight Weight)
+        private static int GetIntegerValueFromEnumeratedValue(CoinWeight Weight)
+        {
+            string strValue = string.Empty;
+            if (Weight == CoinWeight.Nickel)
+            {
+                strValue = Enum.Format(typeof(CoinWeight), CoinWeight.Nickel, "d");
+            }
+            else if (Weight == CoinWeight.Dime)
+            {
+                strValue = Enum.Format(typeof(CoinWeight), CoinWeight.Dime, "d");
+            }
+            else if (Weight == CoinWeight.Quarter)
+            {
+                strValue = Enum.Format(typeof(CoinWeight), CoinWeight.Quarter, "d");
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException("The GetIntegerValueFromEnumeratedValue() was given an invalid argument");
+            }
+
+            return ParseIntegerFromString(strValue);
+
+        }
+        #endregion
+
+        #region private static int GetIntegerValueFromEnumeratedValue(CoinSize Size)
+        private static int GetIntegerValueFromEnumeratedValue(CoinSize Size)
+        {
+            string strValue = string.Empty;
+            if (Size == CoinSize.Nickel)
+            {
+                strValue = Enum.Format(typeof(CoinSize), CoinSize.Nickel, "d");
+            }
+            else if (Size == CoinSize.Dime)
+            {
+                strValue = Enum.Format(typeof(CoinSize), CoinSize.Dime, "d");
+            }
+            else if (Size == CoinSize.Quarter)
+            {
+                strValue = Enum.Format(typeof(CoinSize), CoinSize.Quarter, "d");
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException("The GetIntegerValueFromEnumeratedValue() was given an invalid argument");
+            }
+
+            return ParseIntegerFromString(strValue);
+
+        }
+        #endregion
+
+        #region private static int ParseIntegerFromString(string InputValue)
+        private static int ParseIntegerFromString(string InputValue)
+        {
+            int ReturnValue;
+            if (int.TryParse(InputValue, out ReturnValue) == true)
+            {
+                return ReturnValue;
+            }
+            else
+            {
+                throw new InvalidCastException("Error trying to parse an integer from a string!");
             }
         }
         #endregion
+
+
 
         #region public static bool IsValidCoin(int size, int weight)
         public static bool IsValidCoin(int size, int weight)
