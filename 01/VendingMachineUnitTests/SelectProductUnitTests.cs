@@ -43,6 +43,9 @@ namespace VendingMachineUnitTests
             string vendingMachineFollowUpMessage;
             int vendingMacineValue;
 
+            string vendingMachineMessageExpected;
+            string vendingMachineFollowUpMessageExpected;
+
             result1 = dependentClass.AddNickelToVendingMachine();
             result2 = dependentClass.AddDimeToVendingMachine();
             result3 = dependentClass.AddQuarterToVendingMachine();
@@ -56,6 +59,10 @@ namespace VendingMachineUnitTests
             vendingMachineFollowUpMessage = dependentClass.GetVendingMachineDisplay();
             vendingMacineValue = dependentClass.GetVendingMachineCoinValueInPennies();
 
+            vendingMachineMessageExpected = "PRICE :: $" + string.Format("{0:C}", Product.GetCostForACola() / 100);
+            vendingMachineFollowUpMessageExpected = "$" + string.Format("{0:C}", vendingMacineValue / 100);
+
+
             Assert.AreEqual(true, result1);
             Assert.AreEqual(true, result2);
             Assert.AreEqual(true, result3);
@@ -63,8 +70,9 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(true, result5);
             Assert.AreEqual(true, result6);
             Assert.AreEqual(false, productDispensed);
-            Assert.AreEqual("$0.80", vendingMachineMessage);
+            Assert.AreEqual(vendingMachineMessageExpected, vendingMachineMessage);
             Assert.AreEqual(80, vendingMacineValue);
+            Assert.AreEqual(vendingMachineFollowUpMessageExpected, vendingMachineFollowUpMessage);
 
         }
 
@@ -126,6 +134,9 @@ namespace VendingMachineUnitTests
             string vendingMachineFollowUpMessage;
             int vendingMacineValue;
 
+            string vendingMachineMessageExpected;
+            string vendingMachineFollowUpMessageExpected;
+
             result1 = dependentClass.AddNickelToVendingMachine();
             result2 = dependentClass.AddDimeToVendingMachine();
             result3 = dependentClass.AddQuarterToVendingMachine();
@@ -135,12 +146,16 @@ namespace VendingMachineUnitTests
             vendingMachineFollowUpMessage = dependentClass.GetVendingMachineDisplay();
             vendingMacineValue = dependentClass.GetVendingMachineCoinValueInPennies();
 
+            vendingMachineMessageExpected = "PRICE :: $" + string.Format("{0:C}", Product.GetCostForACandy() / 100);
+            vendingMachineFollowUpMessageExpected = "$" + string.Format("{0:C}", vendingMacineValue / 100);
+
             Assert.AreEqual(true, result1);
             Assert.AreEqual(true, result2);
             Assert.AreEqual(true, result3);
             Assert.AreEqual(false, productDispensed);
-            Assert.AreEqual("$0.40", vendingMachineMessage);
+            Assert.AreEqual(vendingMachineMessageExpected, vendingMachineMessage);
             Assert.AreEqual(40, vendingMacineValue);
+            Assert.AreEqual(vendingMachineFollowUpMessageExpected, vendingMachineFollowUpMessage);
 
         }
 
@@ -195,6 +210,9 @@ namespace VendingMachineUnitTests
             string vendingMachineFollowUpMessage;
             int vendingMacineValue;
 
+            string vendingMachineMessageExpected;
+            string vendingMachineFollowUpMessageExpected;
+
             result1 = dependentClass.AddNickelToVendingMachine();
             result2 = dependentClass.AddDimeToVendingMachine();
             result3 = dependentClass.AddQuarterToVendingMachine();
@@ -204,12 +222,17 @@ namespace VendingMachineUnitTests
             vendingMachineFollowUpMessage = dependentClass.GetVendingMachineDisplay();
             vendingMacineValue = dependentClass.GetVendingMachineCoinValueInPennies();
 
+            vendingMachineMessageExpected = "PRICE :: $" + string.Format("{0:C}", Product.GetCostForABagOfChips() / 100);
+            vendingMachineFollowUpMessageExpected = "$" + string.Format("{0:C}", vendingMacineValue / 100);
+
             Assert.AreEqual(true, result1);
             Assert.AreEqual(true, result2);
             Assert.AreEqual(true, result3);
             Assert.AreEqual(false, productDispensed);
-            Assert.AreEqual("$0.40", vendingMachineMessage);
+            Assert.AreEqual(vendingMachineMessageExpected, vendingMachineMessage);
             Assert.AreEqual(40, vendingMacineValue);
+            Assert.AreEqual(vendingMachineFollowUpMessageExpected, vendingMachineFollowUpMessage);
+
 
         }
 
