@@ -67,6 +67,7 @@ namespace VendingMachine
                 bool returnValue = Product.Dispense(product, this.ValueInMachine);
                 if (returnValue)
                 {
+                    this.ValueInMachine = 0;
                     this.DisplayMessage = "THANK YOU";
                 }
                 return returnValue;
