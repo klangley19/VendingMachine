@@ -10,7 +10,7 @@ namespace VendingMachineUnitTests
     public class ReturnCoinsUnitTests
     {
         [TestMethod]
-        public void Keep_Track_Of_The_Coints_Entered_So_They_Can_Be_Returned1()
+        public void Keep_Track_Of_The_Coins_Entered_So_They_Can_Be_Returned1()
         {
             MockVendingMachineDependency dependency = new MockVendingMachineDependency();
             VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
@@ -36,7 +36,7 @@ namespace VendingMachineUnitTests
         }
 
         [TestMethod]
-        public void Keep_Track_Of_The_Coints_Entered_So_They_Can_Be_Returned2()
+        public void Keep_Track_Of_The_Coins_Entered_So_They_Can_Be_Returned2()
         {
             MockVendingMachineDependency dependency = new MockVendingMachineDependency();
             VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
@@ -64,7 +64,7 @@ namespace VendingMachineUnitTests
         }
 
         [TestMethod]
-        public void Keep_Track_Of_The_Coints_Entered_So_They_Can_Be_Returned3()
+        public void Keep_Track_Of_The_Coins_Entered_So_They_Can_Be_Returned3()
         {
             MockVendingMachineDependency dependency = new MockVendingMachineDependency();
             VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
@@ -94,7 +94,7 @@ namespace VendingMachineUnitTests
         }
 
         [TestMethod]
-        public void Keep_Track_Of_The_Coints_Entered_So_They_Can_Be_Returned4()
+        public void Keep_Track_Of_The_Coins_Entered_So_They_Can_Be_Returned4()
         {
             MockVendingMachineDependency dependency = new MockVendingMachineDependency();
             VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
@@ -124,7 +124,7 @@ namespace VendingMachineUnitTests
         }
 
         [TestMethod]
-        public void Keep_Track_Of_The_Coints_Entered_So_They_Can_Be_Returned5()
+        public void Keep_Track_Of_The_Coins_Entered_So_They_Can_Be_Returned5()
         {
             MockVendingMachineDependency dependency = new MockVendingMachineDependency();
             VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
@@ -156,7 +156,7 @@ namespace VendingMachineUnitTests
 
 
         [TestMethod]
-        public void Keep_Track_Of_The_Coints_Entered_So_They_Can_Be_Returned6()
+        public void Keep_Track_Of_The_Coins_Entered_So_They_Can_Be_Returned6()
         {
             MockVendingMachineDependency dependency = new MockVendingMachineDependency();
             VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
@@ -187,7 +187,7 @@ namespace VendingMachineUnitTests
         }
 
         [TestMethod]
-        public void Keep_Track_Of_The_Coints_Entered_So_They_Can_Be_Returned7()
+        public void Keep_Track_Of_The_Coins_Entered_So_They_Can_Be_Returned7()
         {
             MockVendingMachineDependency dependency = new MockVendingMachineDependency();
             VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
@@ -219,7 +219,7 @@ namespace VendingMachineUnitTests
         }
 
         [TestMethod]
-        public void Keep_Track_Of_The_Coints_Entered_So_They_Can_Be_Returned8()
+        public void Keep_Track_Of_The_Coins_Entered_So_They_Can_Be_Returned8()
         {
             MockVendingMachineDependency dependency = new MockVendingMachineDependency();
             VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
@@ -251,6 +251,7 @@ namespace VendingMachineUnitTests
             VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
 
             bool result1, result2, result3;
+            bool change_returned;
             Change change_before_return = new Change();
             Change change_after_return = new Change();
 
@@ -260,7 +261,8 @@ namespace VendingMachineUnitTests
             result3 = dependentClass.AddQuarterToVendingMachine();
 
             change_before_return = dependentClass.GetChangeInVendingMachine();
-            change_after_return = dependentClass.ReturnChangeInVendingMachine();
+            change_returned = dependentClass.ReturnChangeInVendingMachine();
+            change_after_return = dependentClass.GetChangeInVendingMachine();
 
             Assert.AreEqual(true, result1);
             Assert.AreEqual(true, result2);
@@ -269,6 +271,8 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(1, change_before_return.Nickels);
             Assert.AreEqual(1, change_before_return.Dimes);
             Assert.AreEqual(1, change_before_return.Quarters);
+
+            Assert.AreEqual(true, change_returned);
 
             Assert.AreEqual(0, change_after_return.Nickels);
             Assert.AreEqual(0, change_after_return.Dimes);
@@ -283,6 +287,7 @@ namespace VendingMachineUnitTests
             VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
 
             bool result1, result2, result3, result4, result5;
+            bool change_returned;
             Change change_before_return = new Change();
             Change change_after_return = new Change();
 
@@ -293,7 +298,8 @@ namespace VendingMachineUnitTests
             result5 = dependentClass.AddNickelToVendingMachine();
 
             change_before_return = dependentClass.GetChangeInVendingMachine();
-            change_after_return = dependentClass.ReturnChangeInVendingMachine();
+            change_returned = dependentClass.ReturnChangeInVendingMachine();
+            change_after_return = dependentClass.GetChangeInVendingMachine();
 
             Assert.AreEqual(true, result1);
             Assert.AreEqual(true, result2);
@@ -304,6 +310,8 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(5, change_before_return.Nickels);
             Assert.AreEqual(0, change_before_return.Dimes);
             Assert.AreEqual(0, change_before_return.Quarters);
+
+            Assert.AreEqual(true, change_returned);
 
             Assert.AreEqual(0, change_after_return.Nickels);
             Assert.AreEqual(0, change_after_return.Dimes);
@@ -318,6 +326,7 @@ namespace VendingMachineUnitTests
             VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
 
             bool result1, result2, result3, result4, result5;
+            bool change_returned;
             Change change_before_return = new Change();
             Change change_after_return = new Change();
 
@@ -329,7 +338,8 @@ namespace VendingMachineUnitTests
             result5 = dependentClass.AddDimeToVendingMachine();
 
             change_before_return = dependentClass.GetChangeInVendingMachine();
-            change_after_return = dependentClass.ReturnChangeInVendingMachine();
+            change_returned = dependentClass.ReturnChangeInVendingMachine();
+            change_after_return = dependentClass.GetChangeInVendingMachine();
 
             Assert.AreEqual(true, result1);
             Assert.AreEqual(true, result2);
@@ -340,6 +350,8 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(0, change_before_return.Nickels);
             Assert.AreEqual(5, change_before_return.Dimes);
             Assert.AreEqual(0, change_before_return.Quarters);
+
+            Assert.AreEqual(true, change_returned);
 
             Assert.AreEqual(0, change_after_return.Nickels);
             Assert.AreEqual(0, change_after_return.Dimes);
@@ -354,6 +366,7 @@ namespace VendingMachineUnitTests
             VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
 
             bool result1, result2, result3, result4, result5;
+            bool change_returned;
             Change change_before_return = new Change();
             Change change_after_return = new Change();
 
@@ -365,7 +378,8 @@ namespace VendingMachineUnitTests
             result5 = dependentClass.AddQuarterToVendingMachine();
 
             change_before_return = dependentClass.GetChangeInVendingMachine();
-            change_after_return = dependentClass.ReturnChangeInVendingMachine();
+            change_returned = dependentClass.ReturnChangeInVendingMachine();
+            change_after_return = dependentClass.GetChangeInVendingMachine();
 
             Assert.AreEqual(true, result1);
             Assert.AreEqual(true, result2);
@@ -376,6 +390,8 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(0, change_before_return.Nickels);
             Assert.AreEqual(0, change_before_return.Dimes);
             Assert.AreEqual(5, change_before_return.Quarters);
+
+            Assert.AreEqual(true, change_returned);
 
             Assert.AreEqual(0, change_after_return.Nickels);
             Assert.AreEqual(0, change_after_return.Dimes);
@@ -390,6 +406,7 @@ namespace VendingMachineUnitTests
             VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
 
             bool result1, result2, result3, result4, result5, result6;
+            bool change_returned;
             Change change_before_return = new Change();
             Change change_after_return = new Change();
 
@@ -402,7 +419,8 @@ namespace VendingMachineUnitTests
             result6 = dependentClass.AddQuarterToVendingMachine();
 
             change_before_return = dependentClass.GetChangeInVendingMachine();
-            change_after_return = dependentClass.ReturnChangeInVendingMachine();
+            change_returned = dependentClass.ReturnChangeInVendingMachine();
+            change_after_return = dependentClass.GetChangeInVendingMachine();
 
             Assert.AreEqual(true, result1);
             Assert.AreEqual(true, result2);
@@ -414,6 +432,8 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(1, change_before_return.Nickels);
             Assert.AreEqual(2, change_before_return.Dimes);
             Assert.AreEqual(3, change_before_return.Quarters);
+
+            Assert.AreEqual(true, change_returned);
 
             Assert.AreEqual(0, change_after_return.Nickels);
             Assert.AreEqual(0, change_after_return.Dimes);
@@ -429,6 +449,7 @@ namespace VendingMachineUnitTests
             VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
 
             bool result1, result2, result3, result4, result5, result6;
+            bool change_returned;
             Change change_before_return = new Change();
             Change change_after_return = new Change();
 
@@ -441,7 +462,8 @@ namespace VendingMachineUnitTests
             result6 = dependentClass.AddDimeToVendingMachine();
 
             change_before_return = dependentClass.GetChangeInVendingMachine();
-            change_after_return = dependentClass.ReturnChangeInVendingMachine();
+            change_returned = dependentClass.ReturnChangeInVendingMachine();
+            change_after_return = dependentClass.GetChangeInVendingMachine();
 
             Assert.AreEqual(true, result1);
             Assert.AreEqual(true, result2);
@@ -453,6 +475,8 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(2, change_before_return.Nickels);
             Assert.AreEqual(4, change_before_return.Dimes);
             Assert.AreEqual(0, change_before_return.Quarters);
+
+            Assert.AreEqual(true, change_returned);
 
             Assert.AreEqual(0, change_after_return.Nickels);
             Assert.AreEqual(0, change_after_return.Dimes);
@@ -467,6 +491,7 @@ namespace VendingMachineUnitTests
             VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
 
             bool result1, result2, result3, result4, result5, result6;
+            bool change_returned;
             Change change_before_return = new Change();
             Change change_after_return = new Change();
 
@@ -479,7 +504,8 @@ namespace VendingMachineUnitTests
             result6 = dependentClass.AddQuarterToVendingMachine();
 
             change_before_return = dependentClass.GetChangeInVendingMachine();
-            change_after_return = dependentClass.ReturnChangeInVendingMachine();
+            change_returned = dependentClass.ReturnChangeInVendingMachine();
+            change_after_return = dependentClass.GetChangeInVendingMachine();
 
             Assert.AreEqual(true, result1);
             Assert.AreEqual(true, result2);
@@ -491,6 +517,8 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(2, change_before_return.Nickels);
             Assert.AreEqual(0, change_before_return.Dimes);
             Assert.AreEqual(4, change_before_return.Quarters);
+
+            Assert.AreEqual(true, change_returned);
 
             Assert.AreEqual(0, change_after_return.Nickels);
             Assert.AreEqual(0, change_after_return.Dimes);
@@ -505,6 +533,7 @@ namespace VendingMachineUnitTests
             VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
 
             bool result1, result2, result3, result4, result5, result6;
+            bool change_returned;
             Change change_before_return = new Change();
             Change change_after_return = new Change();
 
@@ -517,11 +546,14 @@ namespace VendingMachineUnitTests
             result6 = dependentClass.AddQuarterToVendingMachine();
 
             change_before_return = dependentClass.GetChangeInVendingMachine();
-            change_after_return = dependentClass.ReturnChangeInVendingMachine();
+            change_returned = dependentClass.ReturnChangeInVendingMachine();
+            change_after_return = dependentClass.GetChangeInVendingMachine();
 
             Assert.AreEqual(0, change_before_return.Nickels);
             Assert.AreEqual(4, change_before_return.Dimes);
             Assert.AreEqual(2, change_before_return.Quarters);
+
+            Assert.AreEqual(true, change_returned);
 
             Assert.AreEqual(0, change_after_return.Nickels);
             Assert.AreEqual(0, change_after_return.Dimes);

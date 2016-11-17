@@ -20,6 +20,8 @@ namespace VendingMachineUnitTests.Mocks
         string GetVendingMachineDisplay();
         bool Dispense(Products product);
         Change LatestChangeMade();
+        Change GetChangeInVendingMachine();
+        bool ReturnChangeInVendingMachine();
     }
     #endregion
 
@@ -68,6 +70,17 @@ namespace VendingMachineUnitTests.Mocks
             return this._dependency.LatestChangeMade();
         }
 
+        public Change GetChangeInVendingMachine()
+        {
+            return this._dependency.GetChangeInVendingMachine();
+        }
+
+        public bool ReturnChangeInVendingMachine()
+        {
+            return this._dependency.ReturnChangeInVendingMachine();
+        }
+
+
     }
     #endregion
 
@@ -109,6 +122,16 @@ namespace VendingMachineUnitTests.Mocks
         public Change LatestChangeMade()
         {
             return machine.LatestChangeMade;
+        }
+
+        public Change GetChangeInVendingMachine()
+        {
+            return machine.ChangeInVendingMachine;
+        }
+
+        public bool ReturnChangeInVendingMachine()
+        {
+            return machine.ReturnChangeInVendingMachine();
         }
         #endregion
 
