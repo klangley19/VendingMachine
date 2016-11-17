@@ -61,47 +61,17 @@ namespace VendingMachine
         public static bool Dispense(Products product, int AmountInVendingMachine, out int ProductPrice, out Change change)
         {
             change = new Change();
+            ProductPrice = Product.GetTheCostForAProduct(product);
 
-            if (product == Products.Cola)
+            if (AmountInVendingMachine >= ProductPrice)
             {
-                ProductPrice = Product.GetCostForACola();
-                if (AmountInVendingMachine >= Product.GetCostForACola())
-                {
-                    AmountInVendingMachine -= Product.GetCostForACola();
-                    change = Product.HandleMakingChangeAfterPurchase(AmountInVendingMachine);
-                    AmountInVendingMachine = 0;
-                    return true;
-                }
-                return false;
+                AmountInVendingMachine -= ProductPrice;
+                change = Product.HandleMakingChangeAfterPurchase(AmountInVendingMachine);
+                AmountInVendingMachine = 0;
+                return true;
             }
-            else if (product == Products.Candy)
-            {
-                ProductPrice = Product.GetCostForACandy();
-                if (AmountInVendingMachine >= Product.GetCostForACandy())
-                {
-                    AmountInVendingMachine -= Product.GetCostForACandy();
-                    change = Product.HandleMakingChangeAfterPurchase(AmountInVendingMachine);
-                    AmountInVendingMachine = 0;
-                    return true;
-                }
-                return false;
-            }
-            else if (product == Products.Chips)
-            {
-                ProductPrice = Product.GetCostForABagOfChips();
-                if (AmountInVendingMachine >= Product.GetCostForABagOfChips())
-                {
-                    AmountInVendingMachine -= Product.GetCostForABagOfChips();
-                    change = Product.HandleMakingChangeAfterPurchase(AmountInVendingMachine);
-                    AmountInVendingMachine = 0;
-                    return true;
-                }
-                return false;
-            }
-            else
-            {
-                throw new ArgumentOutOfRangeException("The Dispense method was called without finding a matching product!");
-            }
+            return false;
+
         }
         #endregion
 
@@ -113,6 +83,29 @@ namespace VendingMachine
             decimal decimalAmount = System.Convert.ToDecimal(Amount) / 100m;
             change.MakeChange(decimalAmount);
             return change;
+        }
+        #endregion
+
+        #region private static int GetTheCostForAProduct(Products product)
+        private static int GetTheCostForAProduct(Products product)
+        {
+            if (product == Products.Cola)
+            {
+                return Product.GetCostForACola();
+            }
+            else if (product == Products.Candy)
+            {
+                return Product.GetCostForACandy();
+            }
+            else if (product == Products.Chips)
+            {
+                return Product.GetCostForABagOfChips();
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException("The Dispense method was called without finding a matching product!");
+            }
+
         }
         #endregion
 
