@@ -8,11 +8,24 @@ namespace VendingMachine
 {
     public class Change
     {
+        //public member properties
         public int Quarters { get; set; }
         public int Dimes { get; set; }
         public int Nickels { get; set; }
 
-        #region public Change MakeChange(decimal amount)
+        #region public int ChangeInMachineValue
+        public int ChangeInMachineValue
+        {
+            get
+            {
+                return (this.Quarters * 25) + (this.Dimes * 10) + (this.Nickels * 5);
+            }
+        }
+        #endregion
+
+
+        //public member functions
+        #region public void MakeChange(decimal amount)
         public void MakeChange(decimal amount)
         {
             decimal amountOfChange = amount;

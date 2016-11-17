@@ -10,7 +10,6 @@ namespace VendingMachine
     {
 
         //private member variables
-        private int ValueInMachine;
         private Change ChangeInMachine = new Change();
         private string DisplayMessage = "INSERT COIN";
 
@@ -28,7 +27,7 @@ namespace VendingMachine
         {
             get
             {
-                return this.ValueInMachine;
+                return this.ChangeInMachine.ChangeInMachineValue;
             }
         }
         #endregion
@@ -61,7 +60,6 @@ namespace VendingMachine
             {
                 bool returnValue = Coin.DepositCoin(CoinSize, CoinWeight, out CoinValue);
                 this.AddCoinToChangeInMachineObject(CoinValue);
-                this.ValueInMachine += CoinValue;
                 this.UpdateDisplay();
                 return returnValue;
             }
@@ -85,11 +83,10 @@ namespace VendingMachine
             {
                 int productPrice;
                 Change change;
-                bool returnValue = Product.Dispense(product, this.ValueInMachine, out productPrice, out change);
+                bool returnValue = Product.Dispense(product, this.ChangeInMachine.ChangeInMachineValue, out productPrice, out change);
                 if (returnValue)
                 {
                     this.DispenseChange(change);
-                    this.ValueInMachine = 0;
                     this.DisplayMessage = "THANK YOU";
                 }
                 else
@@ -142,7 +139,7 @@ namespace VendingMachine
             }
             else if (this.DisplayMessage.IndexOf("PRICE") > -1)
             {                
-                if (this.ValueInMachine > 0)
+                if (this.ChangeInMachine.ChangeInMachineValue > 0)
                 {
                     this.DisplayMessage = this.GetDisplayOfValueInMacineAmount();
                 }
@@ -163,7 +160,7 @@ namespace VendingMachine
         {
             decimal value;
 
-            if (decimal.TryParse(ValueInMachine.ToString(), out value) == true)
+            if (decimal.TryParse(this.ChangeInMachine.ChangeInMachineValue.ToString(), out value) == true)
             {
                 return string.Format("{0:C}", value / 100);
             }
