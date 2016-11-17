@@ -105,6 +105,7 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(true, productDispensed);
             Assert.AreEqual("THANK YOU", vendingMachineMessage);
             Assert.AreEqual(0, vendingMacineValue);
+            Assert.AreEqual("INSERT COIN", vendingMachineMessage);
 
         }
 
@@ -169,6 +170,7 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(true, productDispensed);
             Assert.AreEqual("THANK YOU", vendingMachineMessage);
             Assert.AreEqual(0, vendingMacineValue);
+            Assert.AreEqual("INSERT COIN", vendingMachineMessage);
 
         }
 
@@ -233,6 +235,7 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(true, productDispensed);
             Assert.AreEqual("THANK YOU", vendingMachineMessage);
             Assert.AreEqual(0, vendingMacineValue);
+            Assert.AreEqual("INSERT COIN", vendingMachineMessage);
 
         }
 
