@@ -65,6 +65,10 @@ namespace VendingMachine
             try
             {
                 bool returnValue = Product.Dispense(product, this.ValueInMachine);
+                if (returnValue)
+                {
+                    this.DisplayMessage = "THANK YOU";
+                }
                 return returnValue;
             }
             catch (ArgumentOutOfRangeException e)
