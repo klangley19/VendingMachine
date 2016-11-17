@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using VendingMachine;
+using VendingMachineUnitTests.Mocks;
 
 namespace VendingMachineUnitTests
 {
@@ -274,6 +275,79 @@ namespace VendingMachineUnitTests
 
 
 
+        [TestMethod]
+        public void TestMakingChangeAfterPurchase1()
+        { 
+            MockVendingMachineDependency dependency = new MockVendingMachineDependency();
+            VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
+
+            bool result1, result2, result3, result4;
+            bool productDispensed;
+
+            result1 = dependentClass.AddQuarterToVendingMachine();
+            result2 = dependentClass.AddQuarterToVendingMachine();
+            result3 = dependentClass.AddQuarterToVendingMachine();
+            result4 = dependentClass.AddQuarterToVendingMachine();
+
+            productDispensed = dependentClass.Dispense(Products.Cola);
+            c = dependentClass.ChangeDispensed;
+
+            Assert.AreEqual(0, c.Nickels);
+            Assert.AreEqual(0, c.Dimes);
+            Assert.AreEqual(0, c.Quarters);
+            Assert.AreEqual(0, dependentClass.GetVendingMachineCoinValueInPennies());
+        }
+
+        [TestMethod]
+        public void TestMakingChangeAfterPurchase2()
+        {
+            MockVendingMachineDependency dependency = new MockVendingMachineDependency();
+            VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
+
+            bool result1, result2, result3, result4;
+            bool productDispensed;
+
+            result1 = dependentClass.AddQuarterToVendingMachine();
+            result2 = dependentClass.AddQuarterToVendingMachine();
+            result3 = dependentClass.AddQuarterToVendingMachine();
+            result4 = dependentClass.AddQuarterToVendingMachine();
+
+            productDispensed = dependentClass.Dispense(Products.Candy);
+            c = dependentClass.ChangeDispensed;
+
+            Assert.AreEqual(0, c.Nickels);
+            Assert.AreEqual(1, c.Dimes);
+            Assert.AreEqual(1, c.Quarters);
+            Assert.AreEqual(0, dependentClass.GetVendingMachineCoinValueInPennies());
+        }
+
+
+        [TestMethod]
+        public void TestMakingChangeAfterPurchas3()
+        {
+            MockVendingMachineDependency dependency = new MockVendingMachineDependency();
+            VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
+
+            bool result1, result2, result3, result4, result5;
+            bool productDispensed;
+
+            result1 = dependentClass.AddQuarterToVendingMachine();
+            result2 = dependentClass.AddQuarterToVendingMachine();
+            result3 = dependentClass.AddQuarterToVendingMachine();
+            result4 = dependentClass.AddDimeToVendingMachine();
+            result5 = dependentClass.AddNickelToVendingMachine();
+
+            productDispensed = dependentClass.Dispense(Products.Chips);
+            c = dependentClass.ChangeDispensed;
+
+            Assert.AreEqual(1, c.Nickels);
+            Assert.AreEqual(1, c.Dimes);
+            Assert.AreEqual(1, c.Quarters);
+            Assert.AreEqual(0, dependentClass.GetVendingMachineCoinValueInPennies());
+        }
+
+
     }
 }
+
 
