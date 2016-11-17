@@ -22,6 +22,8 @@ namespace VendingMachineUnitTests.Mocks
         Change LatestChangeMade();
         Change GetChangeInVendingMachine();
         bool ReturnChangeInVendingMachine();
+        Inventory GetInventoryLevels();
+        void SetInventoryLevels(Inventory i);
     }
     #endregion
 
@@ -80,6 +82,15 @@ namespace VendingMachineUnitTests.Mocks
             return this._dependency.ReturnChangeInVendingMachine();
         }
 
+        public Inventory GetInventoryLevels()
+        {
+            return this._dependency.GetInventoryLevels();
+        }
+
+        public void SetInventoryLevels(Inventory i)
+        {
+            this._dependency.SetInventoryLevels(i);
+        }
 
     }
     #endregion
@@ -133,6 +144,17 @@ namespace VendingMachineUnitTests.Mocks
         {
             return machine.ReturnChangeInVendingMachine();
         }
+
+        public Inventory GetInventoryLevels()
+        {
+            return machine.InventoryInVendingMachine;
+        }
+
+        public void SetInventoryLevels(Inventory i)
+        {
+            machine.InventoryInVendingMachine = i;
+        }
+
         #endregion
 
 

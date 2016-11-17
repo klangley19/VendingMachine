@@ -18,9 +18,9 @@ namespace VendingMachineUnitTests
 
             Inventory i = dependentClass.GetInventoryLevels();
 
-            Assert.AreEqual(10, i.CandyQuantity);
-            Assert.AreEqual(10, i.ChipQuantity);
-            Assert.AreEqual(10, i.ColaQuantity);
+            Assert.AreEqual(100, i.CandyQuantity);
+            Assert.AreEqual(100, i.ChipQuantity);
+            Assert.AreEqual(100, i.ColaQuantity);
 
         }
 
@@ -52,13 +52,25 @@ namespace VendingMachineUnitTests
             VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
 
             bool result1, result2, result3, result4, result5, result6;
+            int PresaleColaInventory, PresaleCandyInventory, PresaleChipInventory;
             bool productDispensed;
             string vendingMachineMessage;
             string vendingMachineFollowUpMessage;
             int vendingMacineValue;
-
             Inventory presale_inventory_level;
             Inventory postsale_inventory_level;
+
+
+            presale_inventory_level = new Inventory();
+            presale_inventory_level.CandyQuantity = 10;
+            presale_inventory_level.ChipQuantity = 10;
+            presale_inventory_level.ColaQuantity = 10;
+            dependentClass.SetInventoryLevels(presale_inventory_level);
+
+            PresaleCandyInventory = presale_inventory_level.CandyQuantity;
+            PresaleChipInventory = presale_inventory_level.ChipQuantity;
+            PresaleColaInventory = presale_inventory_level.ColaQuantity;
+
 
             result1 = dependentClass.AddNickelToVendingMachine();
             result2 = dependentClass.AddQuarterToVendingMachine();
@@ -66,8 +78,6 @@ namespace VendingMachineUnitTests
             result4 = dependentClass.AddNickelToVendingMachine();
             result5 = dependentClass.AddQuarterToVendingMachine();
             result6 = dependentClass.AddQuarterToVendingMachine();
-
-            presale_inventory_level = dependentClass.GetInventoryLevels();
 
             productDispensed = dependentClass.Dispense(Products.Cola);
             vendingMachineMessage = dependentClass.GetVendingMachineDisplay();
@@ -87,9 +97,9 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(0, vendingMacineValue);
             Assert.AreEqual("INSERT COIN", vendingMachineFollowUpMessage);
 
-            Assert.AreEqual(presale_inventory_level.CandyQuantity, postsale_inventory_level.CandyQuantity);
-            Assert.AreEqual(presale_inventory_level.ChipQuantity, postsale_inventory_level.ChipQuantity);
-            Assert.AreEqual(presale_inventory_level.ColaQuantity - 1, postsale_inventory_level.ColaQuantity);
+            Assert.AreEqual(PresaleCandyInventory, postsale_inventory_level.CandyQuantity);
+            Assert.AreEqual(PresaleChipInventory, postsale_inventory_level.ChipQuantity);
+            Assert.AreEqual(PresaleColaInventory - 1, postsale_inventory_level.ColaQuantity);
         }
 
         [TestMethod]
@@ -100,13 +110,25 @@ namespace VendingMachineUnitTests
             VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
 
             bool result1, result2, result3, result4, result5, result6;
+            int PresaleColaInventory, PresaleCandyInventory, PresaleChipInventory;
             bool productDispensed;
             string vendingMachineMessage;
             string vendingMachineFollowUpMessage;
             int vendingMacineValue;
-
             Inventory presale_inventory_level;
             Inventory postsale_inventory_level;
+
+
+            presale_inventory_level = new Inventory();
+            presale_inventory_level.CandyQuantity = 10;
+            presale_inventory_level.ChipQuantity = 10;
+            presale_inventory_level.ColaQuantity = 10;
+            dependentClass.SetInventoryLevels(presale_inventory_level);
+
+            PresaleCandyInventory = presale_inventory_level.CandyQuantity;
+            PresaleChipInventory = presale_inventory_level.ChipQuantity;
+            PresaleColaInventory = presale_inventory_level.ColaQuantity;
+
 
             result1 = dependentClass.AddNickelToVendingMachine();
             result2 = dependentClass.AddDimeToVendingMachine();
@@ -115,7 +137,6 @@ namespace VendingMachineUnitTests
             result5 = dependentClass.AddDimeToVendingMachine();
             result6 = dependentClass.AddQuarterToVendingMachine();
 
-            presale_inventory_level = dependentClass.GetInventoryLevels();
 
             productDispensed = dependentClass.Dispense(Products.Chips);
             vendingMachineMessage = dependentClass.GetVendingMachineDisplay();
@@ -135,12 +156,9 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(0, vendingMacineValue);
             Assert.AreEqual("INSERT COIN", vendingMachineFollowUpMessage);
 
-            Assert.AreEqual(presale_inventory_level.CandyQuantity, postsale_inventory_level.CandyQuantity);
-            Assert.AreEqual(presale_inventory_level.ChipQuantity - 1, postsale_inventory_level.ChipQuantity);
-            Assert.AreEqual(presale_inventory_level.ColaQuantity, postsale_inventory_level.ColaQuantity);
-
-
-
+            Assert.AreEqual(PresaleCandyInventory, postsale_inventory_level.CandyQuantity);
+            Assert.AreEqual(PresaleChipInventory - 1, postsale_inventory_level.ChipQuantity);
+            Assert.AreEqual(PresaleColaInventory, postsale_inventory_level.ColaQuantity);
 
         }
 
@@ -152,13 +170,24 @@ namespace VendingMachineUnitTests
             VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
 
             bool result1, result2, result3, result4, result5, result6;
+            int PresaleColaInventory, PresaleCandyInventory, PresaleChipInventory;
             bool productDispensed;
             string vendingMachineMessage;
             string vendingMachineFollowUpMessage;
             int vendingMacineValue;
-
             Inventory presale_inventory_level;
             Inventory postsale_inventory_level;
+
+
+            presale_inventory_level = new Inventory();
+            presale_inventory_level.CandyQuantity = 10;
+            presale_inventory_level.ChipQuantity = 10;
+            presale_inventory_level.ColaQuantity = 10;
+            dependentClass.SetInventoryLevels(presale_inventory_level);
+
+            PresaleCandyInventory = presale_inventory_level.CandyQuantity;
+            PresaleChipInventory = presale_inventory_level.ChipQuantity;
+            PresaleColaInventory = presale_inventory_level.ColaQuantity;
 
             result1 = dependentClass.AddNickelToVendingMachine();
             result2 = dependentClass.AddDimeToVendingMachine();
@@ -187,13 +216,9 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(0, vendingMacineValue);
             Assert.AreEqual("INSERT COIN", vendingMachineFollowUpMessage);
 
-            Assert.AreEqual(presale_inventory_level.CandyQuantity - 1, postsale_inventory_level.CandyQuantity);
-            Assert.AreEqual(presale_inventory_level.ChipQuantity, postsale_inventory_level.ChipQuantity);
-            Assert.AreEqual(presale_inventory_level.ColaQuantity, postsale_inventory_level.ColaQuantity);
-
-
-
-
+            Assert.AreEqual(PresaleCandyInventory - 1, postsale_inventory_level.CandyQuantity);
+            Assert.AreEqual(PresaleChipInventory, postsale_inventory_level.ChipQuantity);
+            Assert.AreEqual(PresaleColaInventory, postsale_inventory_level.ColaQuantity);
         }
 
         [TestMethod]
@@ -204,20 +229,25 @@ namespace VendingMachineUnitTests
             VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
 
             bool result1, result2, result3, result4, result5, result6;
+            int PresaleColaInventory, PresaleCandyInventory, PresaleChipInventory;
             bool productDispensed;
             string vendingMachineMessage;
             string vendingMachineFollowUpMessage;
             string vendingMachineFollowUpMessageExpected;
             int vendingMacineValue;
-
             Inventory presale_inventory_level;
             Inventory postsale_inventory_level;
 
-            Inventory i = new Inventory();
-            i.CandyQuantity = 3;
-            i.ChipQuantity = 3;
-            i.ColaQuantity = 0;
-            dependentClass.SetInventoryLevels(i);
+
+            presale_inventory_level = new Inventory();
+            presale_inventory_level.CandyQuantity = 3;
+            presale_inventory_level.ChipQuantity = 3;
+            presale_inventory_level.ColaQuantity = 0;
+            dependentClass.SetInventoryLevels(presale_inventory_level);
+
+            PresaleCandyInventory = presale_inventory_level.CandyQuantity;
+            PresaleChipInventory = presale_inventory_level.ChipQuantity;
+            PresaleColaInventory = presale_inventory_level.ColaQuantity;
 
 
             result1 = dependentClass.AddQuarterToVendingMachine();
@@ -226,8 +256,6 @@ namespace VendingMachineUnitTests
             result4 = dependentClass.AddQuarterToVendingMachine();
             result5 = dependentClass.AddQuarterToVendingMachine();
             result6 = dependentClass.AddQuarterToVendingMachine();
-
-            presale_inventory_level = dependentClass.GetInventoryLevels();
 
             productDispensed = dependentClass.Dispense(Products.Cola);
             vendingMachineMessage = dependentClass.GetVendingMachineDisplay();
@@ -247,11 +275,11 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(false, productDispensed);
             Assert.AreEqual("SOLD OUT", vendingMachineMessage);
             Assert.AreEqual(150, vendingMacineValue);
-            Assert.AreEqual("INSERT COIN", vendingMachineFollowUpMessage);
+            Assert.AreEqual(vendingMachineFollowUpMessageExpected, vendingMachineFollowUpMessage);
 
-            Assert.AreEqual(presale_inventory_level.CandyQuantity, postsale_inventory_level.CandyQuantity);
-            Assert.AreEqual(presale_inventory_level.ChipQuantity, postsale_inventory_level.ChipQuantity);
-            Assert.AreEqual(presale_inventory_level.ColaQuantity, postsale_inventory_level.ColaQuantity);
+            Assert.AreEqual(PresaleCandyInventory, postsale_inventory_level.CandyQuantity);
+            Assert.AreEqual(PresaleChipInventory, postsale_inventory_level.ChipQuantity);
+            Assert.AreEqual(PresaleColaInventory, postsale_inventory_level.ColaQuantity);
 
 
 
@@ -269,17 +297,14 @@ namespace VendingMachineUnitTests
             string vendingMachineFollowUpMessage;
             int vendingMacineValue;
 
-            Inventory presale_inventory_level;
+            Inventory presale_inventory_level = new Inventory();
+            presale_inventory_level.CandyQuantity = 3;
+            presale_inventory_level.ChipQuantity = 3;
+            presale_inventory_level.ColaQuantity = 0;
+            dependentClass.SetInventoryLevels(presale_inventory_level);
+
             Inventory postsale_inventory_level;
 
-            Inventory i = new Inventory();
-            i.CandyQuantity = 3;
-            i.ChipQuantity = 3;
-            i.ColaQuantity = 0;
-            dependentClass.SetInventoryLevels(i);
-
-
-            presale_inventory_level = dependentClass.GetInventoryLevels();
 
             productDispensed = dependentClass.Dispense(Products.Cola);
             vendingMachineMessage = dependentClass.GetVendingMachineDisplay();

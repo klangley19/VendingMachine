@@ -12,7 +12,7 @@ namespace VendingMachine
         //private member variables
         private Change ChangeInMachine = new Change();
         private string DisplayMessage = "INSERT COIN";
-
+        private Inventory CurrentInventoryLevel = new Inventory();
 
         //public class properties
         #region public Change ChangeInVendingMachine
@@ -49,6 +49,14 @@ namespace VendingMachine
         { get; private set; }
         #endregion
 
+        #region public Inventory InventoryInVendingMachine
+        public Inventory InventoryInVendingMachine
+        {
+            get { return this.CurrentInventoryLevel; }
+            set { this.CurrentInventoryLevel = value; }
+        }
+        #endregion
+
 
         //public class member functions
         #region public bool DepositCoin(int CoinSize, int CoinWeight)
@@ -81,17 +89,29 @@ namespace VendingMachine
         {
             try
             {
+                bool returnValue;
                 int productPrice;
                 Change change;
-                bool returnValue = Product.Dispense(product, this.ChangeInMachine.ChangeInMachineValue, out productPrice, out change);
-                if (returnValue)
+
+                //first check inventory to be sure we have it
+                if (this.CheckInventoryForProductToDispense(product) == false)
                 {
-                    this.DispenseChange(change);
-                    this.DisplayMessage = "THANK YOU";
+                    this.DisplayMessage = "SOLD OUT";
+                    returnValue = false;
                 }
                 else
                 {
-                    this.DisplayMessage = "PRICE :: " + string.Format("{0:C}", System.Convert.ToDecimal(productPrice) / 100m);
+                    returnValue = Product.Dispense(product, this.ChangeInMachine.ChangeInMachineValue, out productPrice, out change);
+                    if (returnValue)
+                    {
+                        this.AdjustInventoryForProductToDispense(product);
+                        this.DispenseChange(change);
+                        this.DisplayMessage = "THANK YOU";
+                    }
+                    else
+                    {
+                        this.DisplayMessage = "PRICE :: " + string.Format("{0:C}", System.Convert.ToDecimal(productPrice) / 100m);
+                    }
                 }
                 return returnValue;
             }
@@ -127,6 +147,7 @@ namespace VendingMachine
         #endregion
 
 
+
         //private class member functions
         #region private void UpdateDisplay()
         private void UpdateDisplay()
@@ -137,7 +158,7 @@ namespace VendingMachine
             {
                 this.DisplayMessage = "INSERT COIN";
             }
-            else if (this.DisplayMessage.IndexOf("PRICE") > -1)
+            else if (this.DisplayMessage.IndexOf("PRICE") > -1 || this.DisplayMessage.IndexOf("SOLD OUT") > -1)
             {                
                 if (this.ChangeInMachine.ChangeInMachineValue > 0)
                 {
@@ -199,6 +220,47 @@ namespace VendingMachine
                 this.ChangeInMachine.Quarters++;
         }
         #endregion
+
+        #region private bool CheckInventoryForProductToDispense(Products product)
+        private bool CheckInventoryForProductToDispense(Products product)
+        {
+            if (product == Products.Candy && this.InventoryInVendingMachine.CandyQuantity > 0)
+            {
+                return true;
+            }
+            else if (product == Products.Chips && this.InventoryInVendingMachine.ChipQuantity > 0)
+            {
+                return true;
+            }
+            else if (product == Products.Cola && this.InventoryInVendingMachine.ColaQuantity > 0)
+            {
+                return true;
+            }
+            return false;
+
+        }
+        #endregion
+
+        #region private void AdjustInventoryForProductToDispense(Products product)
+        private void AdjustInventoryForProductToDispense(Products product)
+        {
+            if (product == Products.Candy)
+            {
+                this.InventoryInVendingMachine.CandyQuantity--;
+            }
+            else if (product == Products.Chips)
+            {
+                this.InventoryInVendingMachine.ChipQuantity--;
+            }
+            else if (product == Products.Cola)
+            {
+                this.InventoryInVendingMachine.ColaQuantity--;
+            }
+            return;
+
+        }
+        #endregion
+
 
     }
 }
