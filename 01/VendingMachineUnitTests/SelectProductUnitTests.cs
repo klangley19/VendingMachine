@@ -275,7 +275,35 @@ namespace VendingMachineUnitTests
         }
 
 
+        [TestMethod]
+        public void Try_Buying_Something_With_Nothing_In_The_Vending_Machine()
+        {
+            MockVendingMachineDependency dependency = new MockVendingMachineDependency();
+            VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
 
+            bool productDispensed;
+            string vendingMachineMessage;
+            string vendingMachineFollowUpMessage;
+            int vendingMacineValue;
+
+            string vendingMachineMessageExpected;
+            string vendingMachineFollowUpMessageExpected;
+
+            productDispensed = dependentClass.Dispense(Products.Chips);
+            vendingMachineMessage = dependentClass.GetVendingMachineDisplay();
+            vendingMachineFollowUpMessage = dependentClass.GetVendingMachineDisplay();
+            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInPennies();
+
+            vendingMachineMessageExpected = "PRICE :: " + string.Format("{0:C}", System.Convert.ToDecimal(Product.GetCostForABagOfChips()) / 100m);
+            vendingMachineFollowUpMessageExpected = "INSERT COIN";
+
+            Assert.AreEqual(false, productDispensed);
+            Assert.AreEqual(vendingMachineMessageExpected, vendingMachineMessage);
+            Assert.AreEqual(0, vendingMacineValue);
+            Assert.AreEqual(vendingMachineFollowUpMessageExpected, vendingMachineFollowUpMessage);
+
+
+        }
 
     }
 }
