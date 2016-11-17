@@ -59,8 +59,8 @@ namespace VendingMachineUnitTests
             vendingMachineFollowUpMessage = dependentClass.GetVendingMachineDisplay();
             vendingMacineValue = dependentClass.GetVendingMachineCoinValueInPennies();
 
-            vendingMachineMessageExpected = "PRICE :: $" + string.Format("{0:C}", Product.GetCostForACola() / 100);
-            vendingMachineFollowUpMessageExpected = "$" + string.Format("{0:C}", vendingMacineValue / 100);
+            vendingMachineMessageExpected = "PRICE :: " + string.Format("{0:C}", System.Convert.ToDecimal(Product.GetCostForACola()) / 100m);
+            vendingMachineFollowUpMessageExpected = string.Format("{0:C}", System.Convert.ToDecimal(vendingMacineValue) / 100m);
 
 
             Assert.AreEqual(true, result1);
@@ -146,8 +146,8 @@ namespace VendingMachineUnitTests
             vendingMachineFollowUpMessage = dependentClass.GetVendingMachineDisplay();
             vendingMacineValue = dependentClass.GetVendingMachineCoinValueInPennies();
 
-            vendingMachineMessageExpected = "PRICE :: $" + string.Format("{0:C}", Product.GetCostForACandy() / 100);
-            vendingMachineFollowUpMessageExpected = "$" + string.Format("{0:C}", vendingMacineValue / 100);
+            vendingMachineMessageExpected = "PRICE :: " + string.Format("{0:C}", System.Convert.ToDecimal(Product.GetCostForACandy()) / 100m);
+            vendingMachineFollowUpMessageExpected = string.Format("{0:C}", System.Convert.ToDecimal(vendingMacineValue) / 100m);
 
             Assert.AreEqual(true, result1);
             Assert.AreEqual(true, result2);
@@ -222,8 +222,8 @@ namespace VendingMachineUnitTests
             vendingMachineFollowUpMessage = dependentClass.GetVendingMachineDisplay();
             vendingMacineValue = dependentClass.GetVendingMachineCoinValueInPennies();
 
-            vendingMachineMessageExpected = "PRICE :: $" + string.Format("{0:C}", Product.GetCostForABagOfChips() / 100);
-            vendingMachineFollowUpMessageExpected = "$" + string.Format("{0:C}", vendingMacineValue / 100);
+            vendingMachineMessageExpected = "PRICE :: " + string.Format("{0:C}", System.Convert.ToDecimal(Product.GetCostForABagOfChips()) / 100m);
+            vendingMachineFollowUpMessageExpected = string.Format("{0:C}", System.Convert.ToDecimal(vendingMacineValue) / 100m);
 
             Assert.AreEqual(true, result1);
             Assert.AreEqual(true, result2);

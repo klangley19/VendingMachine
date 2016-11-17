@@ -58,10 +58,11 @@ namespace VendingMachine
 
 
         #region public static bool Dispense(Products product)
-        public static bool Dispense(Products product, int AmountInVendingMachine)
+        public static bool Dispense(Products product, int AmountInVendingMachine, out int ProductPrice)
         {
             if (product == Products.Cola)
             {
+                ProductPrice = Product.GetCostForACola();
                 if (AmountInVendingMachine >= Product.GetCostForACola())
                 {
                     AmountInVendingMachine -= Product.GetCostForACola();
@@ -71,6 +72,7 @@ namespace VendingMachine
             }
             else if (product == Products.Candy)
             {
+                ProductPrice = Product.GetCostForACandy();
                 if (AmountInVendingMachine >= Product.GetCostForACandy())
                 {
                     AmountInVendingMachine -= Product.GetCostForACandy();
@@ -80,6 +82,7 @@ namespace VendingMachine
             }
             else if (product == Products.Chips)
             {
+                ProductPrice = Product.GetCostForABagOfChips();
                 if (AmountInVendingMachine >= Product.GetCostForABagOfChips())
                 {
                     AmountInVendingMachine -= Product.GetCostForABagOfChips();

@@ -66,11 +66,16 @@ namespace VendingMachine
         {
             try
             {
-                bool returnValue = Product.Dispense(product, this.ValueInMachine);
+                int productPrice;
+                bool returnValue = Product.Dispense(product, this.ValueInMachine, out productPrice);
                 if (returnValue)
                 {
                     this.ValueInMachine = 0;
                     this.DisplayMessage = "THANK YOU";
+                }
+                else
+                {
+                    this.DisplayMessage = "PRICE :: " + string.Format("{0:C}", System.Convert.ToDecimal(productPrice) / 100m);
                 }
                 return returnValue;
             }
@@ -91,27 +96,45 @@ namespace VendingMachine
         #region private void UpdateDisplay()
         private void UpdateDisplay()
         {
-            decimal value;
+            
 
             if (this.DisplayMessage == "THANK YOU")
             {
                 this.DisplayMessage = "INSERT COIN";
             }
-            else
-            {
-                if (decimal.TryParse(ValueInMachine.ToString(), out value) == true)
+            else if (this.DisplayMessage.IndexOf("PRICE") > -1)
+            {                
+                if (this.ValueInMachine > 0)
                 {
-                    this.DisplayMessage = string.Format("{0:C}", value / 100);
+                    this.DisplayMessage = this.GetDisplayOfValueInMacineAmount();
                 }
                 else
                 {
-                    throw new InvalidCastException("Error with getting the coin value being added to the vending machine to update the display!");
+                    this.DisplayMessage = "INSERT COIN";
                 }
             }
-
+            else
+            {
+                this.DisplayMessage = this.GetDisplayOfValueInMacineAmount();
+            }
         }
         #endregion
 
+        #region private string GetDisplayOfValueInMacineAmount()
+        private string GetDisplayOfValueInMacineAmount()
+        {
+            decimal value;
+
+            if (decimal.TryParse(ValueInMachine.ToString(), out value) == true)
+            {
+                return string.Format("{0:C}", value / 100);
+            }
+            else
+            {
+                throw new InvalidCastException("Error with getting the coin value being added to the vending machine to update the display!");
+            }
+        }
+        #endregion
 
     }
 }
