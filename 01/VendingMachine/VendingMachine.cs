@@ -43,7 +43,7 @@ namespace VendingMachine
             {
                 bool returnValue = Coin.DepositCoin(CoinSize, CoinWeight, out CoinValue);
                 this.ValueInMachine += CoinValue;
-                this.UpdateDisplay(CoinValue);
+                this.UpdateDisplay();
                 return returnValue;
             }
             catch (ArgumentOutOfRangeException e)
@@ -86,8 +86,8 @@ namespace VendingMachine
         }
         #endregion
 
-        #region private void UpdateDisplay(int Amount)
-        private void UpdateDisplay(int Amount)
+        #region private void UpdateDisplay()
+        private void UpdateDisplay()
         {
             decimal value;
             if (decimal.TryParse(ValueInMachine.ToString(), out value) == true)
