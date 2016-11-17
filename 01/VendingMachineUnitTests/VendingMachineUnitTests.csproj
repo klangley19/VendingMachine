@@ -53,6 +53,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="AcceptCoinsUnitTests.cs" />
+    <Compile Include="ExactChangeUnitTests.cs" />
     <Compile Include="MakingChangeUnitTests.cs" />
     <Compile Include="Mocks\VendingMachine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
