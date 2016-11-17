@@ -18,7 +18,7 @@ namespace VendingMachine
         {
             get
             {
-                return (this.Quarters * 25) + (this.Dimes * 10) + (this.Nickels * 5);
+                return (this.Quarters * Coin.GetValueForQuarter()) + (this.Dimes * Coin.GetValueForDime()) + (this.Nickels * Coin.GetValueForNickel());
             }
         }
         #endregion
