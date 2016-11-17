@@ -62,37 +62,22 @@ namespace VendingMachine
         #region public bool Dispense(Products product)
         public bool Dispense(Products product)
         {
-            if (product == Products.Cola)
+            try
             {
-                if (this.ValueInMachine >= Product.GetCostForACola())
-                {
-                    this.ValueInMachine -= Product.GetCostForACola();
-                    return true;
-                }
+                bool returnValue = Product.Dispense(product, this.ValueInMachine);
+                return returnValue;
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                //TODO :: something useful like log the error instead of ignoring it
                 return false;
             }
-            else if (product == Products.Candy)
+            catch (Exception e)
             {
-                if (this.ValueInMachine >= Product.GetCostForACandy())
-                {
-                    this.ValueInMachine -= Product.GetCostForACandy();
-                    return true;
-                }
+                //TODO :: something useful like log the error instead of ignoring it
                 return false;
             }
-            else if (product == Products.Chips)
-            {
-                if (this.ValueInMachine >= Product.GetCostForABagOfChips())
-                {
-                    this.ValueInMachine -= Product.GetCostForABagOfChips();
-                    return true;
-                }
-                return false;
-            }
-            else
-            {
-                throw new ArgumentOutOfRangeException("The Dispense method was called without finding a matching product!");
-            }
+
         }
         #endregion
 
