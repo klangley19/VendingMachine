@@ -27,7 +27,9 @@ namespace VendingMachine
         {
             get
             {
-                return DisplayMessage;
+                string initialValue = this.DisplayMessage;
+                this.UpdateDisplay();
+                return initialValue;
             }
         }
         #endregion
@@ -90,13 +92,21 @@ namespace VendingMachine
         private void UpdateDisplay()
         {
             decimal value;
-            if (decimal.TryParse(ValueInMachine.ToString(), out value) == true)
+
+            if (this.DisplayMessage == "THANK YOU")
             {
-                this.DisplayMessage = string.Format("{0:C}", value/100);
+                this.DisplayMessage = "INSERT COIN";
             }
             else
             {
-                throw new InvalidCastException("Error with getting the coin value being added to the vending machine to update the display!");
+                if (decimal.TryParse(ValueInMachine.ToString(), out value) == true)
+                {
+                    this.DisplayMessage = string.Format("{0:C}", value / 100);
+                }
+                else
+                {
+                    throw new InvalidCastException("Error with getting the coin value being added to the vending machine to update the display!");
+                }
             }
 
         }

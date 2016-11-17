@@ -40,6 +40,7 @@ namespace VendingMachineUnitTests
             bool result1, result2, result3, result4, result5, result6;
             bool productDispensed;
             string vendingMachineMessage;
+            string vendingMachineFollowUpMessage;
             int vendingMacineValue;
 
             result1 = dependentClass.AddNickelToVendingMachine();
@@ -52,6 +53,7 @@ namespace VendingMachineUnitTests
 
             productDispensed = dependentClass.Dispense(Products.Cola);
             vendingMachineMessage = dependentClass.GetVendingMachineDisplay();
+            vendingMachineFollowUpMessage = dependentClass.GetVendingMachineDisplay();
             vendingMacineValue = dependentClass.GetVendingMachineCoinValueInPennies();
 
             Assert.AreEqual(true, result1);
@@ -75,6 +77,7 @@ namespace VendingMachineUnitTests
             bool result1, result2, result3, result4, result5, result6, result7, result8, result9;
             bool productDispensed;
             string vendingMachineMessage;
+            string vendingMachineFollowUpMessage;
             int vendingMacineValue;
 
             result1 = dependentClass.AddNickelToVendingMachine();
@@ -91,6 +94,7 @@ namespace VendingMachineUnitTests
 
             productDispensed = dependentClass.Dispense(Products.Cola);
             vendingMachineMessage = dependentClass.GetVendingMachineDisplay();
+            vendingMachineFollowUpMessage = dependentClass.GetVendingMachineDisplay();
             vendingMacineValue = dependentClass.GetVendingMachineCoinValueInPennies();
 
             Assert.AreEqual(true, result1);
@@ -105,7 +109,7 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(true, productDispensed);
             Assert.AreEqual("THANK YOU", vendingMachineMessage);
             Assert.AreEqual(0, vendingMacineValue);
-            Assert.AreEqual("INSERT COIN", vendingMachineMessage);
+            Assert.AreEqual("INSERT COIN", vendingMachineFollowUpMessage);
 
         }
 
@@ -119,6 +123,7 @@ namespace VendingMachineUnitTests
             bool result1, result2, result3;
             bool productDispensed;
             string vendingMachineMessage;
+            string vendingMachineFollowUpMessage;
             int vendingMacineValue;
 
             result1 = dependentClass.AddNickelToVendingMachine();
@@ -127,6 +132,7 @@ namespace VendingMachineUnitTests
 
             productDispensed = dependentClass.Dispense(Products.Candy);
             vendingMachineMessage = dependentClass.GetVendingMachineDisplay();
+            vendingMachineFollowUpMessage = dependentClass.GetVendingMachineDisplay();
             vendingMacineValue = dependentClass.GetVendingMachineCoinValueInPennies();
 
             Assert.AreEqual(true, result1);
@@ -147,6 +153,7 @@ namespace VendingMachineUnitTests
             bool result1, result2, result3, result4, result5, result6;
             bool productDispensed;
             string vendingMachineMessage;
+            string vendingMachineFollowUpMessage;
             int vendingMacineValue;
 
             result1 = dependentClass.AddNickelToVendingMachine();
@@ -159,6 +166,7 @@ namespace VendingMachineUnitTests
 
             productDispensed = dependentClass.Dispense(Products.Candy);
             vendingMachineMessage = dependentClass.GetVendingMachineDisplay();
+            vendingMachineFollowUpMessage = dependentClass.GetVendingMachineDisplay();
             vendingMacineValue = dependentClass.GetVendingMachineCoinValueInPennies();
 
             Assert.AreEqual(true, result1);
@@ -170,7 +178,7 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(true, productDispensed);
             Assert.AreEqual("THANK YOU", vendingMachineMessage);
             Assert.AreEqual(0, vendingMacineValue);
-            Assert.AreEqual("INSERT COIN", vendingMachineMessage);
+            Assert.AreEqual("INSERT COIN", vendingMachineFollowUpMessage);
 
         }
 
@@ -184,6 +192,7 @@ namespace VendingMachineUnitTests
             bool result1, result2, result3;
             bool productDispensed;
             string vendingMachineMessage;
+            string vendingMachineFollowUpMessage;
             int vendingMacineValue;
 
             result1 = dependentClass.AddNickelToVendingMachine();
@@ -192,6 +201,7 @@ namespace VendingMachineUnitTests
 
             productDispensed = dependentClass.Dispense(Products.Chips);
             vendingMachineMessage = dependentClass.GetVendingMachineDisplay();
+            vendingMachineFollowUpMessage = dependentClass.GetVendingMachineDisplay();
             vendingMacineValue = dependentClass.GetVendingMachineCoinValueInPennies();
 
             Assert.AreEqual(true, result1);
@@ -212,6 +222,7 @@ namespace VendingMachineUnitTests
             bool result1, result2, result3, result4, result5, result6;
             bool productDispensed;
             string vendingMachineMessage;
+            string vendingMachineFollowUpMessage;
             int vendingMacineValue;
 
             result1 = dependentClass.AddNickelToVendingMachine();
@@ -224,6 +235,7 @@ namespace VendingMachineUnitTests
 
             productDispensed = dependentClass.Dispense(Products.Chips);
             vendingMachineMessage = dependentClass.GetVendingMachineDisplay();
+            vendingMachineFollowUpMessage = dependentClass.GetVendingMachineDisplay();
             vendingMacineValue = dependentClass.GetVendingMachineCoinValueInPennies();
 
             Assert.AreEqual(true, result1);
@@ -235,7 +247,7 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(true, productDispensed);
             Assert.AreEqual("THANK YOU", vendingMachineMessage);
             Assert.AreEqual(0, vendingMacineValue);
-            Assert.AreEqual("INSERT COIN", vendingMachineMessage);
+            Assert.AreEqual("INSERT COIN", vendingMachineFollowUpMessage);
 
         }
 
