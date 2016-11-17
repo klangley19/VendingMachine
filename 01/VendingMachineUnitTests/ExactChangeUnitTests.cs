@@ -67,6 +67,9 @@ namespace VendingMachineUnitTests
             string display1, display2, display3, display4, display5, display6;
             string vendingMachineMessage1, vendingMachineMessage2;
 
+
+            dependentClass.SetExactChange(true);
+
             vendingMachineMessage1 = dependentClass.GetVendingMachineDisplay();
 
             result1 = dependentClass.AddNickelToVendingMachine();
@@ -134,7 +137,7 @@ namespace VendingMachineUnitTests
 
             //assert
             Assert.AreEqual(true, ProductDispensed);
-            Assert.AreEqual("THANK YOU!", vendingMachineMessage);
+            Assert.AreEqual("THANK YOU", vendingMachineMessage);
             Assert.AreNotEqual("INSERT COIN", vendingMachineFollowUpMessage);
             Assert.AreEqual("EXACT CHANGE ONLY", vendingMachineFollowUpMessage);
             Assert.AreEqual(0, vendingMacineValue);
@@ -172,7 +175,7 @@ namespace VendingMachineUnitTests
 
             //assert
             Assert.AreEqual(false, ProductDispensed);
-
+            Assert.AreEqual("EXACT CHANGE ONLY", vendingMachineMessage);
             Assert.AreNotEqual("EXACT CHANGE ONLY", vendingMachineFollowUpMessage);
             Assert.AreEqual("$1.05", vendingMachineFollowUpMessage);
             Assert.AreEqual(105, vendingMacineValue);

@@ -24,6 +24,7 @@ namespace VendingMachineUnitTests.Mocks
         bool ReturnChangeInVendingMachine();
         Inventory GetInventoryLevels();
         void SetInventoryLevels(Inventory i);
+        void SetExactChange(bool setting);
     }
     #endregion
 
@@ -92,6 +93,11 @@ namespace VendingMachineUnitTests.Mocks
             this._dependency.SetInventoryLevels(i);
         }
 
+        public void SetExactChange(bool setting)
+        {
+            this._dependency.SetExactChange(setting);
+        }
+
     }
     #endregion
 
@@ -153,6 +159,11 @@ namespace VendingMachineUnitTests.Mocks
         public void SetInventoryLevels(Inventory i)
         {
             machine.InventoryInVendingMachine = i;
+        }
+
+        public void SetExactChange(bool setting)
+        {
+            machine.RequireExactChangeForPurchase = setting;
         }
 
         #endregion

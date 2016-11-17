@@ -13,6 +13,7 @@ namespace VendingMachine
         private Change ChangeInMachine = new Change();
         private string DisplayMessage = "INSERT COIN";
         private Inventory CurrentInventoryLevel = new Inventory();
+        private bool RequireExactChange = false;
 
         //public class properties
         #region public Change ChangeInVendingMachine
@@ -54,6 +55,29 @@ namespace VendingMachine
         {
             get { return this.CurrentInventoryLevel; }
             set { this.CurrentInventoryLevel = value; }
+        }
+        #endregion
+
+        #region public bool RequireExactChangeForPurchase
+        public bool RequireExactChangeForPurchase
+        {
+            get
+            {
+                return this.RequireExactChange;
+            }
+            set
+            {
+                this.RequireExactChange = value;
+                if (this.DisplayMessage == "INSERT COIN" && this.RequireExactChange)
+                {
+                    this.DisplayMessage = "EXACT CHANGE ONLY";
+                }
+                else if (this.DisplayMessage == "EXACT CHANGE ONLY" && (this.RequireExactChange == false))
+                {
+                    this.DisplayMessage = "INSERT COIN";
+                }
+
+            }
         }
         #endregion
 
@@ -99,6 +123,11 @@ namespace VendingMachine
                     this.DisplayMessage = "SOLD OUT";
                     returnValue = false;
                 }
+                else if (this.MakeSureExactAmountIsDepositedIfRequired(product) == false)
+                {
+                    this.DisplayMessage = "EXACT CHANGE ONLY";
+                    returnValue = false;
+                }
                 else
                 {
                     returnValue = Product.Dispense(product, this.ChangeInMachine.ChangeInMachineValue, out productPrice, out change);
@@ -135,6 +164,7 @@ namespace VendingMachine
             try
             {
                 this.DispenseChange(this.ChangeInMachine);
+                this.UpdateDisplay();
                 return true;
             }
             catch (Exception e)
@@ -156,7 +186,7 @@ namespace VendingMachine
 
             if (this.DisplayMessage == "THANK YOU")
             {
-                this.DisplayMessage = "INSERT COIN";
+                this.DisplayMessage = this.DisplayInitialMessage();
             }
             else if (this.DisplayMessage.IndexOf("PRICE") > -1 || this.DisplayMessage.IndexOf("SOLD OUT") > -1)
             {                
@@ -166,12 +196,19 @@ namespace VendingMachine
                 }
                 else
                 {
-                    this.DisplayMessage = "INSERT COIN";
+                    this.DisplayMessage = this.DisplayInitialMessage();
                 }
             }
             else
             {
-                this.DisplayMessage = this.GetDisplayOfValueInMacineAmount();
+                if (this.ChangeInMachine.ChangeInMachineValue > 0)
+                {
+                    this.DisplayMessage = this.GetDisplayOfValueInMacineAmount();
+                }
+                else
+                {
+                    this.DisplayMessage = this.DisplayInitialMessage();
+                }
             }
         }
         #endregion
@@ -189,6 +226,16 @@ namespace VendingMachine
             {
                 throw new InvalidCastException("Error with getting the coin value being added to the vending machine to update the display!");
             }
+        }
+        #endregion
+
+        #region private string DisplayInitialMessage()
+        private string DisplayInitialMessage()
+        {
+            if (this.RequireExactChange)
+                return "EXACT CHANGE ONLY";
+            else
+                return "INSERT COIN";
         }
         #endregion
 
@@ -261,6 +308,31 @@ namespace VendingMachine
         }
         #endregion
 
+        #region private bool MakeSureExactAmountIsDepositedIfRequired(Products product)
+        private bool MakeSureExactAmountIsDepositedIfRequired(Products product)
+        {
+            if (this.RequireExactChange == false)
+            {
+                return true;
+            }
+            else if (product == Products.Candy)
+            {
+                if (Product.GetCostForACandy() == this.ChangeInMachine.ChangeInMachineValue)
+                    return true;
+            }
+            else if (product == Products.Chips)
+            {
+                if (Product.GetCostForABagOfChips() == this.ChangeInMachine.ChangeInMachineValue)
+                    return true;
+            }
+            else if (product == Products.Cola)
+            {
+                if (Product.GetCostForACola() == this.ChangeInMachine.ChangeInMachineValue)
+                    return true;
+            }
+            return false;
 
+        }
+        #endregion
     }
 }
