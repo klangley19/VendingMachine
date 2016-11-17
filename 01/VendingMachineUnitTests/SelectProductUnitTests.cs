@@ -40,6 +40,7 @@ namespace VendingMachineUnitTests
             bool result1, result2, result3, result4, result5, result6;
             bool productDispensed;
             string vendingMachineMessage;
+            int vendingMacineValue;
 
             result1 = dependentClass.AddNickelToVendingMachine();
             result2 = dependentClass.AddDimeToVendingMachine();
@@ -51,6 +52,7 @@ namespace VendingMachineUnitTests
 
             productDispensed = dependentClass.Dispense(Products.Cola);
             vendingMachineMessage = dependentClass.GetVendingMachineDisplay();
+            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInPennies();
 
             Assert.AreEqual(true, result1);
             Assert.AreEqual(true, result2);
@@ -60,6 +62,7 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(true, result6);
             Assert.AreEqual(false, productDispensed);
             Assert.AreEqual("$0.80", vendingMachineMessage);
+            Assert.AreEqual(80, vendingMacineValue);
 
         }
 
@@ -72,6 +75,7 @@ namespace VendingMachineUnitTests
             bool result1, result2, result3, result4, result5, result6, result7, result8, result9;
             bool productDispensed;
             string vendingMachineMessage;
+            int vendingMacineValue;
 
             result1 = dependentClass.AddNickelToVendingMachine();
             result2 = dependentClass.AddDimeToVendingMachine();
@@ -87,6 +91,7 @@ namespace VendingMachineUnitTests
 
             productDispensed = dependentClass.Dispense(Products.Cola);
             vendingMachineMessage = dependentClass.GetVendingMachineDisplay();
+            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInPennies();
 
             Assert.AreEqual(true, result1);
             Assert.AreEqual(true, result2);
@@ -99,6 +104,7 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(true, result9);
             Assert.AreEqual(true, productDispensed);
             Assert.AreEqual("THANK YOU", vendingMachineMessage);
+            Assert.AreEqual(0, vendingMacineValue);
 
         }
 
@@ -112,6 +118,7 @@ namespace VendingMachineUnitTests
             bool result1, result2, result3;
             bool productDispensed;
             string vendingMachineMessage;
+            int vendingMacineValue;
 
             result1 = dependentClass.AddNickelToVendingMachine();
             result2 = dependentClass.AddDimeToVendingMachine();
@@ -119,12 +126,14 @@ namespace VendingMachineUnitTests
 
             productDispensed = dependentClass.Dispense(Products.Candy);
             vendingMachineMessage = dependentClass.GetVendingMachineDisplay();
+            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInPennies();
 
             Assert.AreEqual(true, result1);
             Assert.AreEqual(true, result2);
             Assert.AreEqual(true, result3);
             Assert.AreEqual(false, productDispensed);
             Assert.AreEqual("$0.40", vendingMachineMessage);
+            Assert.AreEqual(40, vendingMacineValue);
 
         }
 
@@ -137,6 +146,7 @@ namespace VendingMachineUnitTests
             bool result1, result2, result3, result4, result5, result6;
             bool productDispensed;
             string vendingMachineMessage;
+            int vendingMacineValue;
 
             result1 = dependentClass.AddNickelToVendingMachine();
             result2 = dependentClass.AddDimeToVendingMachine();
@@ -148,6 +158,7 @@ namespace VendingMachineUnitTests
 
             productDispensed = dependentClass.Dispense(Products.Candy);
             vendingMachineMessage = dependentClass.GetVendingMachineDisplay();
+            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInPennies();
 
             Assert.AreEqual(true, result1);
             Assert.AreEqual(true, result2);
@@ -157,6 +168,7 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(true, result6);
             Assert.AreEqual(true, productDispensed);
             Assert.AreEqual("THANK YOU", vendingMachineMessage);
+            Assert.AreEqual(0, vendingMacineValue);
 
         }
 
@@ -170,6 +182,7 @@ namespace VendingMachineUnitTests
             bool result1, result2, result3;
             bool productDispensed;
             string vendingMachineMessage;
+            int vendingMacineValue;
 
             result1 = dependentClass.AddNickelToVendingMachine();
             result2 = dependentClass.AddDimeToVendingMachine();
@@ -177,12 +190,14 @@ namespace VendingMachineUnitTests
 
             productDispensed = dependentClass.Dispense(Products.Chips);
             vendingMachineMessage = dependentClass.GetVendingMachineDisplay();
+            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInPennies();
 
             Assert.AreEqual(true, result1);
             Assert.AreEqual(true, result2);
             Assert.AreEqual(true, result3);
             Assert.AreEqual(false, productDispensed);
             Assert.AreEqual("$0.40", vendingMachineMessage);
+            Assert.AreEqual(40, vendingMacineValue);
 
         }
 
@@ -195,6 +210,7 @@ namespace VendingMachineUnitTests
             bool result1, result2, result3, result4, result5, result6;
             bool productDispensed;
             string vendingMachineMessage;
+            int vendingMacineValue;
 
             result1 = dependentClass.AddNickelToVendingMachine();
             result2 = dependentClass.AddDimeToVendingMachine();
@@ -206,6 +222,7 @@ namespace VendingMachineUnitTests
 
             productDispensed = dependentClass.Dispense(Products.Chips);
             vendingMachineMessage = dependentClass.GetVendingMachineDisplay();
+            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInPennies();
 
             Assert.AreEqual(true, result1);
             Assert.AreEqual(true, result2);
@@ -215,8 +232,11 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(true, result6);
             Assert.AreEqual(true, productDispensed);
             Assert.AreEqual("THANK YOU", vendingMachineMessage);
+            Assert.AreEqual(0, vendingMacineValue);
 
         }
+
+
 
 
     }
