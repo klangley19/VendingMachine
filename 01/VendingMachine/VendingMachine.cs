@@ -34,7 +34,10 @@ namespace VendingMachine
         }
         #endregion
 
-
+        #region public Change LatestChangeMade
+        public Change LatestChangeMade
+        { get; private set; }
+        #endregion
 
         #region public bool DepositCoin(int CoinSize, int CoinWeight)
         public bool DepositCoin(int CoinSize, int CoinWeight)
@@ -67,9 +70,11 @@ namespace VendingMachine
             try
             {
                 int productPrice;
-                bool returnValue = Product.Dispense(product, this.ValueInMachine, out productPrice);
+                Change change;
+                bool returnValue = Product.Dispense(product, this.ValueInMachine, out productPrice, out change);
                 if (returnValue)
                 {
+                    this.DispenseChange(change);
                     this.ValueInMachine = 0;
                     this.DisplayMessage = "THANK YOU";
                 }
@@ -133,6 +138,20 @@ namespace VendingMachine
             {
                 throw new InvalidCastException("Error with getting the coin value being added to the vending machine to update the display!");
             }
+        }
+        #endregion
+
+        #region private void DispenseChange(Change c)
+        private void DispenseChange(Change c)
+        {
+            //code here to tell machine how many quarters, how many dimes and how many nickels
+            //to put into the coin return 
+            //dispense ... c.Quarters
+            //dispense ... c.Dimes
+            //dispense ... c.Nickels
+
+            this.LatestChangeMade = c;
+            return;
         }
         #endregion
 

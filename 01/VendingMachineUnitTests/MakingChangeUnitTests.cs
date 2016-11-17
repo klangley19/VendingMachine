@@ -290,7 +290,7 @@ namespace VendingMachineUnitTests
             result4 = dependentClass.AddQuarterToVendingMachine();
 
             productDispensed = dependentClass.Dispense(Products.Cola);
-            c = dependentClass.ChangeDispensed;
+            c = dependentClass.LatestChangeMade();
 
             Assert.AreEqual(0, c.Nickels);
             Assert.AreEqual(0, c.Dimes);
@@ -313,7 +313,7 @@ namespace VendingMachineUnitTests
             result4 = dependentClass.AddQuarterToVendingMachine();
 
             productDispensed = dependentClass.Dispense(Products.Candy);
-            c = dependentClass.ChangeDispensed;
+            c = dependentClass.LatestChangeMade();
 
             Assert.AreEqual(0, c.Nickels);
             Assert.AreEqual(1, c.Dimes);
@@ -338,7 +338,7 @@ namespace VendingMachineUnitTests
             result5 = dependentClass.AddNickelToVendingMachine();
 
             productDispensed = dependentClass.Dispense(Products.Chips);
-            c = dependentClass.ChangeDispensed;
+            c = dependentClass.LatestChangeMade();
 
             Assert.AreEqual(1, c.Nickels);
             Assert.AreEqual(1, c.Dimes);

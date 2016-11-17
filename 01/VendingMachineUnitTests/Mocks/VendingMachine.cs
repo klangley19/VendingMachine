@@ -19,6 +19,7 @@ namespace VendingMachineUnitTests.Mocks
         int GetVendingMachineCoinValueInPennies();
         string GetVendingMachineDisplay();
         bool Dispense(Products product);
+        Change LatestChangeMade();
     }
     #endregion
 
@@ -62,6 +63,11 @@ namespace VendingMachineUnitTests.Mocks
             return this._dependency.Dispense(product);
         }
 
+        public Change LatestChangeMade()
+        {
+            return this._dependency.LatestChangeMade();
+        }
+
     }
     #endregion
 
@@ -98,6 +104,11 @@ namespace VendingMachineUnitTests.Mocks
         public bool Dispense(Products product)
         {
             return machine.Dispense(product);
+        }
+
+        public Change LatestChangeMade()
+        {
+            return machine.LatestChangeMade;
         }
         #endregion
 

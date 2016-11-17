@@ -58,14 +58,18 @@ namespace VendingMachine
 
 
         #region public static bool Dispense(Products product)
-        public static bool Dispense(Products product, int AmountInVendingMachine, out int ProductPrice)
+        public static bool Dispense(Products product, int AmountInVendingMachine, out int ProductPrice, out Change change)
         {
+            change = new Change();
+
             if (product == Products.Cola)
             {
                 ProductPrice = Product.GetCostForACola();
                 if (AmountInVendingMachine >= Product.GetCostForACola())
                 {
                     AmountInVendingMachine -= Product.GetCostForACola();
+                    change = Product.HandleMakingChangeAfterPurchase(AmountInVendingMachine);
+                    AmountInVendingMachine = 0;
                     return true;
                 }
                 return false;
@@ -76,6 +80,8 @@ namespace VendingMachine
                 if (AmountInVendingMachine >= Product.GetCostForACandy())
                 {
                     AmountInVendingMachine -= Product.GetCostForACandy();
+                    change = Product.HandleMakingChangeAfterPurchase(AmountInVendingMachine);
+                    AmountInVendingMachine = 0;
                     return true;
                 }
                 return false;
@@ -86,6 +92,8 @@ namespace VendingMachine
                 if (AmountInVendingMachine >= Product.GetCostForABagOfChips())
                 {
                     AmountInVendingMachine -= Product.GetCostForABagOfChips();
+                    change = Product.HandleMakingChangeAfterPurchase(AmountInVendingMachine);
+                    AmountInVendingMachine = 0;
                     return true;
                 }
                 return false;
@@ -97,6 +105,16 @@ namespace VendingMachine
         }
         #endregion
 
+
+        #region private static Change HandleMakingChangeAfterPurchase(int Amount)
+        private static Change HandleMakingChangeAfterPurchase(int Amount)
+        {
+            Change change = new Change();
+            decimal decimalAmount = System.Convert.ToDecimal(Amount) / 100m;
+            change.MakeChange(decimalAmount);
+            return change;
+        }
+        #endregion
 
     }
 }
