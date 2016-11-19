@@ -198,17 +198,6 @@ namespace VendingMachine
             {
                 this.DisplayMessage = this.DisplayInitialMessage();
             }
-            else if (this.DisplayMessage.IndexOf("PRICE") > -1 || this.DisplayMessage.IndexOf("SOLD OUT") > -1)
-            {                
-                if (this.ChangeInMachine.ChangeInMachineValue > 0)
-                {
-                    this.DisplayMessage = this.GetDisplayOfValueInMacineAmount();
-                }
-                else
-                {
-                    this.DisplayMessage = this.DisplayInitialMessage();
-                }
-            }
             else
             {
                 if (this.ChangeInMachine.ChangeInMachineValue > 0)
