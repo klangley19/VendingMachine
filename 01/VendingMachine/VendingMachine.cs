@@ -259,11 +259,11 @@ namespace VendingMachine
         #region private void AddCoinToChangeInMachineObject(int CoinValue)
         private void AddCoinToChangeInMachineObject(int CoinValue)
         {
-            if (CoinValue == 5)
+            if (CoinValue == Coin.GetValueForNickel())
                 this.ChangeInMachine.Nickels++;
-            else if (CoinValue == 10)
+            else if (CoinValue == Coin.GetValueForDime())
                 this.ChangeInMachine.Dimes++;
-            else if (CoinValue == 25)
+            else if (CoinValue == Coin.GetValueForQuarter())
                 this.ChangeInMachine.Quarters++;
         }
         #endregion
