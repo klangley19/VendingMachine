@@ -18,6 +18,12 @@ namespace VendingMachine
     public static class Product
     {
 
+        #region private constants for the product cost
+        private const int CandyCostAmount = 65;
+        private const int ChipsCostAmount = 50;
+        private const int ColaCostAmount = 100;
+        #endregion
+
         #region private static readonly member variables
         private static readonly int CandyCost;
         private static readonly int ChipsCost;
@@ -27,9 +33,9 @@ namespace VendingMachine
         #region static Product()
         static Product()
         {
-            Product.CandyCost = 65;
-            Product.ChipsCost = 50;
-            Product.ColaCost = 100;
+            Product.CandyCost = CandyCostAmount;
+            Product.ChipsCost = ChipsCostAmount;
+            Product.ColaCost = ColaCostAmount;
         }
         #endregion
 
