@@ -82,7 +82,7 @@ namespace VendingMachineUnitTests
             productDispensed = dependentClass.Dispense(Products.Cola);
             vendingMachineMessage = dependentClass.GetVendingMachineDisplay();
             vendingMachineFollowUpMessage = dependentClass.GetVendingMachineDisplay();
-            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInPennies();
+            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInCents();
 
             postsale_inventory_level = dependentClass.GetInventoryLevels();
 
@@ -141,7 +141,7 @@ namespace VendingMachineUnitTests
             productDispensed = dependentClass.Dispense(Products.Chips);
             vendingMachineMessage = dependentClass.GetVendingMachineDisplay();
             vendingMachineFollowUpMessage = dependentClass.GetVendingMachineDisplay();
-            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInPennies();
+            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInCents();
 
             postsale_inventory_level = dependentClass.GetInventoryLevels();
 
@@ -201,7 +201,7 @@ namespace VendingMachineUnitTests
             productDispensed = dependentClass.Dispense(Products.Candy);
             vendingMachineMessage = dependentClass.GetVendingMachineDisplay();
             vendingMachineFollowUpMessage = dependentClass.GetVendingMachineDisplay();
-            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInPennies();
+            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInCents();
 
             postsale_inventory_level = dependentClass.GetInventoryLevels();
 
@@ -260,7 +260,7 @@ namespace VendingMachineUnitTests
             productDispensed = dependentClass.Dispense(Products.Cola);
             vendingMachineMessage = dependentClass.GetVendingMachineDisplay();
             vendingMachineFollowUpMessage = dependentClass.GetVendingMachineDisplay();
-            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInPennies();
+            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInCents();
 
             vendingMachineFollowUpMessageExpected = string.Format("{0:C}", System.Convert.ToDecimal(vendingMacineValue) / 100m);
 
@@ -309,7 +309,7 @@ namespace VendingMachineUnitTests
             productDispensed = dependentClass.Dispense(Products.Cola);
             vendingMachineMessage = dependentClass.GetVendingMachineDisplay();
             vendingMachineFollowUpMessage = dependentClass.GetVendingMachineDisplay();
-            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInPennies();
+            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInCents();
 
             postsale_inventory_level = dependentClass.GetInventoryLevels();
 

@@ -57,7 +57,7 @@ namespace VendingMachineUnitTests
             productDispensed = dependentClass.Dispense(Products.Cola);
             vendingMachineMessage = dependentClass.GetVendingMachineDisplay();
             vendingMachineFollowUpMessage = dependentClass.GetVendingMachineDisplay();
-            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInPennies();
+            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInCents();
 
             vendingMachineMessageExpected = "PRICE :: " + string.Format("{0:C}", System.Convert.ToDecimal(Product.GetCostForACola()) / 100m);
             vendingMachineFollowUpMessageExpected = string.Format("{0:C}", System.Convert.ToDecimal(vendingMacineValue) / 100m);
@@ -103,7 +103,7 @@ namespace VendingMachineUnitTests
             productDispensed = dependentClass.Dispense(Products.Cola);
             vendingMachineMessage = dependentClass.GetVendingMachineDisplay();
             vendingMachineFollowUpMessage = dependentClass.GetVendingMachineDisplay();
-            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInPennies();
+            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInCents();
 
             Assert.AreEqual(true, result1);
             Assert.AreEqual(true, result2);
@@ -144,7 +144,7 @@ namespace VendingMachineUnitTests
             productDispensed = dependentClass.Dispense(Products.Candy);
             vendingMachineMessage = dependentClass.GetVendingMachineDisplay();
             vendingMachineFollowUpMessage = dependentClass.GetVendingMachineDisplay();
-            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInPennies();
+            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInCents();
 
             vendingMachineMessageExpected = "PRICE :: " + string.Format("{0:C}", System.Convert.ToDecimal(Product.GetCostForACandy()) / 100m);
             vendingMachineFollowUpMessageExpected = string.Format("{0:C}", System.Convert.ToDecimal(vendingMacineValue) / 100m);
@@ -182,7 +182,7 @@ namespace VendingMachineUnitTests
             productDispensed = dependentClass.Dispense(Products.Candy);
             vendingMachineMessage = dependentClass.GetVendingMachineDisplay();
             vendingMachineFollowUpMessage = dependentClass.GetVendingMachineDisplay();
-            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInPennies();
+            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInCents();
 
             Assert.AreEqual(true, result1);
             Assert.AreEqual(true, result2);
@@ -220,7 +220,7 @@ namespace VendingMachineUnitTests
             productDispensed = dependentClass.Dispense(Products.Chips);
             vendingMachineMessage = dependentClass.GetVendingMachineDisplay();
             vendingMachineFollowUpMessage = dependentClass.GetVendingMachineDisplay();
-            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInPennies();
+            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInCents();
 
             vendingMachineMessageExpected = "PRICE :: " + string.Format("{0:C}", System.Convert.ToDecimal(Product.GetCostForABagOfChips()) / 100m);
             vendingMachineFollowUpMessageExpected = string.Format("{0:C}", System.Convert.ToDecimal(vendingMacineValue) / 100m);
@@ -259,7 +259,7 @@ namespace VendingMachineUnitTests
             productDispensed = dependentClass.Dispense(Products.Chips);
             vendingMachineMessage = dependentClass.GetVendingMachineDisplay();
             vendingMachineFollowUpMessage = dependentClass.GetVendingMachineDisplay();
-            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInPennies();
+            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInCents();
 
             Assert.AreEqual(true, result1);
             Assert.AreEqual(true, result2);
@@ -292,7 +292,7 @@ namespace VendingMachineUnitTests
             productDispensed = dependentClass.Dispense(Products.Chips);
             vendingMachineMessage = dependentClass.GetVendingMachineDisplay();
             vendingMachineFollowUpMessage = dependentClass.GetVendingMachineDisplay();
-            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInPennies();
+            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInCents();
 
             vendingMachineMessageExpected = "PRICE :: " + string.Format("{0:C}", System.Convert.ToDecimal(Product.GetCostForABagOfChips()) / 100m);
             vendingMachineFollowUpMessageExpected = "INSERT COIN";

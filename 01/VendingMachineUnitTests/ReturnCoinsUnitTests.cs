@@ -254,15 +254,20 @@ namespace VendingMachineUnitTests
             bool change_returned;
             Change change_before_return = new Change();
             Change change_after_return = new Change();
-
+            string VendingMachineMessageBeforeChangeReturn;
+            string VendingMachineMessageAfterChangeReturn;
 
             result1 = dependentClass.AddNickelToVendingMachine();
             result2 = dependentClass.AddDimeToVendingMachine();
             result3 = dependentClass.AddQuarterToVendingMachine();
 
+            VendingMachineMessageBeforeChangeReturn = dependentClass.GetVendingMachineDisplay();
+
             change_before_return = dependentClass.GetChangeInVendingMachine();
             change_returned = dependentClass.ReturnChangeInVendingMachine();
             change_after_return = dependentClass.GetChangeInVendingMachine();
+
+            VendingMachineMessageAfterChangeReturn = dependentClass.GetVendingMachineDisplay();
 
             Assert.AreEqual(true, result1);
             Assert.AreEqual(true, result2);
@@ -278,6 +283,9 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(0, change_after_return.Dimes);
             Assert.AreEqual(0, change_after_return.Quarters);
 
+            Assert.AreEqual("$0.40", VendingMachineMessageBeforeChangeReturn);
+            Assert.AreEqual("INSERT COIN", VendingMachineMessageAfterChangeReturn);
+
         }
 
         [TestMethod]
@@ -290,6 +298,9 @@ namespace VendingMachineUnitTests
             bool change_returned;
             Change change_before_return = new Change();
             Change change_after_return = new Change();
+            string VendingMachineMessageBeforeChangeReturn;
+            string VendingMachineMessageAfterChangeReturn;
+
 
             result1 = dependentClass.AddNickelToVendingMachine();
             result2 = dependentClass.AddNickelToVendingMachine();
@@ -297,9 +308,13 @@ namespace VendingMachineUnitTests
             result4 = dependentClass.AddNickelToVendingMachine();
             result5 = dependentClass.AddNickelToVendingMachine();
 
+            VendingMachineMessageBeforeChangeReturn = dependentClass.GetVendingMachineDisplay();
+
             change_before_return = dependentClass.GetChangeInVendingMachine();
             change_returned = dependentClass.ReturnChangeInVendingMachine();
             change_after_return = dependentClass.GetChangeInVendingMachine();
+
+            VendingMachineMessageAfterChangeReturn = dependentClass.GetVendingMachineDisplay();
 
             Assert.AreEqual(true, result1);
             Assert.AreEqual(true, result2);
@@ -317,6 +332,9 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(0, change_after_return.Dimes);
             Assert.AreEqual(0, change_after_return.Quarters);
 
+            Assert.AreEqual("$0.25", VendingMachineMessageBeforeChangeReturn);
+            Assert.AreEqual("INSERT COIN", VendingMachineMessageAfterChangeReturn);
+
         }
 
         [TestMethod]
@@ -329,6 +347,8 @@ namespace VendingMachineUnitTests
             bool change_returned;
             Change change_before_return = new Change();
             Change change_after_return = new Change();
+            string VendingMachineMessageBeforeChangeReturn;
+            string VendingMachineMessageAfterChangeReturn;
 
 
             result1 = dependentClass.AddDimeToVendingMachine();
@@ -337,9 +357,13 @@ namespace VendingMachineUnitTests
             result4 = dependentClass.AddDimeToVendingMachine();
             result5 = dependentClass.AddDimeToVendingMachine();
 
+            VendingMachineMessageBeforeChangeReturn = dependentClass.GetVendingMachineDisplay();
+
             change_before_return = dependentClass.GetChangeInVendingMachine();
             change_returned = dependentClass.ReturnChangeInVendingMachine();
             change_after_return = dependentClass.GetChangeInVendingMachine();
+
+            VendingMachineMessageAfterChangeReturn = dependentClass.GetVendingMachineDisplay();
 
             Assert.AreEqual(true, result1);
             Assert.AreEqual(true, result2);
@@ -357,6 +381,9 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(0, change_after_return.Dimes);
             Assert.AreEqual(0, change_after_return.Quarters);
 
+            Assert.AreEqual("$0.50", VendingMachineMessageBeforeChangeReturn);
+            Assert.AreEqual("INSERT COIN", VendingMachineMessageAfterChangeReturn);
+
         }
 
         [TestMethod]
@@ -369,6 +396,8 @@ namespace VendingMachineUnitTests
             bool change_returned;
             Change change_before_return = new Change();
             Change change_after_return = new Change();
+            string VendingMachineMessageBeforeChangeReturn;
+            string VendingMachineMessageAfterChangeReturn;
 
 
             result1 = dependentClass.AddQuarterToVendingMachine();
@@ -377,9 +406,13 @@ namespace VendingMachineUnitTests
             result4 = dependentClass.AddQuarterToVendingMachine();
             result5 = dependentClass.AddQuarterToVendingMachine();
 
+            VendingMachineMessageBeforeChangeReturn = dependentClass.GetVendingMachineDisplay();
+
             change_before_return = dependentClass.GetChangeInVendingMachine();
             change_returned = dependentClass.ReturnChangeInVendingMachine();
             change_after_return = dependentClass.GetChangeInVendingMachine();
+
+            VendingMachineMessageAfterChangeReturn = dependentClass.GetVendingMachineDisplay();
 
             Assert.AreEqual(true, result1);
             Assert.AreEqual(true, result2);
@@ -397,6 +430,9 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(0, change_after_return.Dimes);
             Assert.AreEqual(0, change_after_return.Quarters);
 
+            Assert.AreEqual("$1.25", VendingMachineMessageBeforeChangeReturn);
+            Assert.AreEqual("INSERT COIN", VendingMachineMessageAfterChangeReturn);
+
         }
 
         [TestMethod]
@@ -409,6 +445,8 @@ namespace VendingMachineUnitTests
             bool change_returned;
             Change change_before_return = new Change();
             Change change_after_return = new Change();
+            string VendingMachineMessageBeforeChangeReturn;
+            string VendingMachineMessageAfterChangeReturn;
 
 
             result1 = dependentClass.AddNickelToVendingMachine();
@@ -418,9 +456,13 @@ namespace VendingMachineUnitTests
             result5 = dependentClass.AddQuarterToVendingMachine();
             result6 = dependentClass.AddQuarterToVendingMachine();
 
+            VendingMachineMessageBeforeChangeReturn = dependentClass.GetVendingMachineDisplay();
+
             change_before_return = dependentClass.GetChangeInVendingMachine();
             change_returned = dependentClass.ReturnChangeInVendingMachine();
             change_after_return = dependentClass.GetChangeInVendingMachine();
+
+            VendingMachineMessageAfterChangeReturn = dependentClass.GetVendingMachineDisplay();
 
             Assert.AreEqual(true, result1);
             Assert.AreEqual(true, result2);
@@ -439,6 +481,9 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(0, change_after_return.Dimes);
             Assert.AreEqual(0, change_after_return.Quarters);
 
+            Assert.AreEqual("$1.00", VendingMachineMessageBeforeChangeReturn);
+            Assert.AreEqual("INSERT COIN", VendingMachineMessageAfterChangeReturn);
+
         }
 
 
@@ -452,6 +497,8 @@ namespace VendingMachineUnitTests
             bool change_returned;
             Change change_before_return = new Change();
             Change change_after_return = new Change();
+            string VendingMachineMessageBeforeChangeReturn;
+            string VendingMachineMessageAfterChangeReturn;
 
 
             result1 = dependentClass.AddNickelToVendingMachine();
@@ -461,9 +508,13 @@ namespace VendingMachineUnitTests
             result5 = dependentClass.AddDimeToVendingMachine();
             result6 = dependentClass.AddDimeToVendingMachine();
 
+            VendingMachineMessageBeforeChangeReturn = dependentClass.GetVendingMachineDisplay();
+
             change_before_return = dependentClass.GetChangeInVendingMachine();
             change_returned = dependentClass.ReturnChangeInVendingMachine();
             change_after_return = dependentClass.GetChangeInVendingMachine();
+
+            VendingMachineMessageAfterChangeReturn = dependentClass.GetVendingMachineDisplay();
 
             Assert.AreEqual(true, result1);
             Assert.AreEqual(true, result2);
@@ -482,6 +533,9 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(0, change_after_return.Dimes);
             Assert.AreEqual(0, change_after_return.Quarters);
 
+            Assert.AreEqual("$0.50", VendingMachineMessageBeforeChangeReturn);
+            Assert.AreEqual("INSERT COIN", VendingMachineMessageAfterChangeReturn);
+
         }
 
         [TestMethod]
@@ -494,6 +548,8 @@ namespace VendingMachineUnitTests
             bool change_returned;
             Change change_before_return = new Change();
             Change change_after_return = new Change();
+            string VendingMachineMessageBeforeChangeReturn;
+            string VendingMachineMessageAfterChangeReturn;
 
 
             result1 = dependentClass.AddNickelToVendingMachine();
@@ -503,9 +559,13 @@ namespace VendingMachineUnitTests
             result5 = dependentClass.AddQuarterToVendingMachine();
             result6 = dependentClass.AddQuarterToVendingMachine();
 
+            VendingMachineMessageBeforeChangeReturn = dependentClass.GetVendingMachineDisplay();
+
             change_before_return = dependentClass.GetChangeInVendingMachine();
             change_returned = dependentClass.ReturnChangeInVendingMachine();
             change_after_return = dependentClass.GetChangeInVendingMachine();
+
+            VendingMachineMessageAfterChangeReturn = dependentClass.GetVendingMachineDisplay();
 
             Assert.AreEqual(true, result1);
             Assert.AreEqual(true, result2);
@@ -524,6 +584,9 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(0, change_after_return.Dimes);
             Assert.AreEqual(0, change_after_return.Quarters);
 
+            Assert.AreEqual("$1.10", VendingMachineMessageBeforeChangeReturn);
+            Assert.AreEqual("INSERT COIN", VendingMachineMessageAfterChangeReturn);
+
         }
 
         [TestMethod]
@@ -536,6 +599,8 @@ namespace VendingMachineUnitTests
             bool change_returned;
             Change change_before_return = new Change();
             Change change_after_return = new Change();
+            string VendingMachineMessageBeforeChangeReturn;
+            string VendingMachineMessageAfterChangeReturn;
 
 
             result1 = dependentClass.AddDimeToVendingMachine();
@@ -545,9 +610,13 @@ namespace VendingMachineUnitTests
             result5 = dependentClass.AddQuarterToVendingMachine();
             result6 = dependentClass.AddQuarterToVendingMachine();
 
+            VendingMachineMessageBeforeChangeReturn = dependentClass.GetVendingMachineDisplay();
+
             change_before_return = dependentClass.GetChangeInVendingMachine();
             change_returned = dependentClass.ReturnChangeInVendingMachine();
             change_after_return = dependentClass.GetChangeInVendingMachine();
+
+            VendingMachineMessageAfterChangeReturn = dependentClass.GetVendingMachineDisplay();
 
             Assert.AreEqual(0, change_before_return.Nickels);
             Assert.AreEqual(4, change_before_return.Dimes);
@@ -558,6 +627,9 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(0, change_after_return.Nickels);
             Assert.AreEqual(0, change_after_return.Dimes);
             Assert.AreEqual(0, change_after_return.Quarters);
+
+            Assert.AreEqual("$0.90", VendingMachineMessageBeforeChangeReturn);
+            Assert.AreEqual("INSERT COIN", VendingMachineMessageAfterChangeReturn);
 
         }
 

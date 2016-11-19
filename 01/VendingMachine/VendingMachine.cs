@@ -11,6 +11,7 @@ namespace VendingMachine
 
         //private member variables
         private Change ChangeInMachine = new Change();
+        private Change LatestChangeMadAfterPurchase = new Change();
         private string DisplayMessage = "INSERT COIN";
         private Inventory CurrentInventoryLevel = new Inventory();
         private bool RequireExactChange = false;
@@ -47,7 +48,16 @@ namespace VendingMachine
 
         #region public Change LatestChangeMade
         public Change LatestChangeMade
-        { get; private set; }
+        {
+            get
+            {
+                return this.LatestChangeMadAfterPurchase;
+            }
+            private set
+            {
+                this.LatestChangeMadAfterPurchase = value;
+            }
+        }
         #endregion
 
         #region public Inventory InventoryInVendingMachine
@@ -178,7 +188,7 @@ namespace VendingMachine
 
 
 
-        //private class member functions
+        //private class member functions - helper methods
         #region private void UpdateDisplay()
         private void UpdateDisplay()
         {

@@ -131,7 +131,7 @@ namespace VendingMachineUnitTests
             ProductDispensed = dependentClass.Dispense(Products.Cola);
             vendingMachineMessage = dependentClass.GetVendingMachineDisplay();
             vendingMachineFollowUpMessage = dependentClass.GetVendingMachineDisplay();
-            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInPennies();
+            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInCents();
 
             dependentClass.SetExactChange(false);
 
@@ -169,7 +169,7 @@ namespace VendingMachineUnitTests
             ProductDispensed = dependentClass.Dispense(Products.Cola);
             vendingMachineMessage = dependentClass.GetVendingMachineDisplay();
             vendingMachineFollowUpMessage = dependentClass.GetVendingMachineDisplay();
-            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInPennies();
+            vendingMacineValue = dependentClass.GetVendingMachineCoinValueInCents();
 
             dependentClass.SetExactChange(false);
 

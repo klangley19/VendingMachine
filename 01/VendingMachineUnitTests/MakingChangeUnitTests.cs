@@ -295,7 +295,7 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(0, c.Nickels);
             Assert.AreEqual(0, c.Dimes);
             Assert.AreEqual(0, c.Quarters);
-            Assert.AreEqual(0, dependentClass.GetVendingMachineCoinValueInPennies());
+            Assert.AreEqual(0, dependentClass.GetVendingMachineCoinValueInCents());
         }
 
         [TestMethod]
@@ -318,7 +318,7 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(0, c.Nickels);
             Assert.AreEqual(1, c.Dimes);
             Assert.AreEqual(1, c.Quarters);
-            Assert.AreEqual(0, dependentClass.GetVendingMachineCoinValueInPennies());
+            Assert.AreEqual(0, dependentClass.GetVendingMachineCoinValueInCents());
         }
 
 
@@ -343,7 +343,7 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(1, c.Nickels);
             Assert.AreEqual(1, c.Dimes);
             Assert.AreEqual(1, c.Quarters);
-            Assert.AreEqual(0, dependentClass.GetVendingMachineCoinValueInPennies());
+            Assert.AreEqual(0, dependentClass.GetVendingMachineCoinValueInCents());
         }
 
 

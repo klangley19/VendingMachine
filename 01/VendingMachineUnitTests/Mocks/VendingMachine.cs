@@ -16,7 +16,7 @@ namespace VendingMachineUnitTests.Mocks
         bool AddNickelToVendingMachine();
         bool AddDimeToVendingMachine();
         bool AddQuarterToVendingMachine();
-        int GetVendingMachineCoinValueInPennies();
+        int GetVendingMachineCoinValueInCents();
         string GetVendingMachineDisplay();
         bool Dispense(Products product);
         Change LatestChangeMade();
@@ -53,9 +53,9 @@ namespace VendingMachineUnitTests.Mocks
             return this._dependency.AddQuarterToVendingMachine();
         }
 
-        public int GetVendingMachineCoinValueInPennies()
+        public int GetVendingMachineCoinValueInCents()
         {
-            return this._dependency.GetVendingMachineCoinValueInPennies();
+            return this._dependency.GetVendingMachineCoinValueInCents();
         }
 
         public string GetVendingMachineDisplay()
@@ -121,7 +121,7 @@ namespace VendingMachineUnitTests.Mocks
             return machine.DepositCoin(Coin.GetSizeForQuarter(), Coin.GetWeightForQuarter());
         }
 
-        public int GetVendingMachineCoinValueInPennies()
+        public int GetVendingMachineCoinValueInCents()
         {
             return machine.DepositedValueInMachine;
         }
