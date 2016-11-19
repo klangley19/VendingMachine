@@ -33,7 +33,7 @@ namespace VendingMachine
             }
             private set
             {
-                this.LatestChangeMadAfterPurchase = value;
+                this.LatestChangeMadeAfterPurchase = value;
             }
         }
         #endregion
