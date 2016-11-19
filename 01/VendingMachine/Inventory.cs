@@ -6,11 +6,17 @@ using System.Threading.Tasks;
 
 namespace VendingMachine
 {
+
+
     public class Inventory
     {
-        private int _candyQuantity = 100;
-        private int _chipQuantity = 100;
-        private int _colaQuantity = 100;
+        private const int InitialCandyInventory = 100;
+        private const int InitialChipInventory = 100;
+        private const int InitialColaInventory = 100;
+
+        private int _candyQuantity = InitialCandyInventory;
+        private int _chipQuantity = InitialChipInventory;
+        private int _colaQuantity = InitialColaInventory;
 
 
         public int CandyQuantity
