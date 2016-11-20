@@ -37,76 +37,76 @@ namespace VendingMachine
     }
     #endregion
 
-    public static class Coin
+    public class Coin : ICoin
     {
-        #region public static int GetValueForNickel()
-        public static int GetValueForNickel()
+        #region public int GetValueForNickel()
+        public int GetValueForNickel()
         {
-            return GetIntegerValueFromEnumeratedValue(CoinValue.Nickel);
+            return this.GetIntegerValueFromEnumeratedValue(CoinValue.Nickel);
         }
         #endregion
 
-        #region public static int GetValueForDime()
-        public static int GetValueForDime()
+        #region public int GetValueForDime()
+        public int GetValueForDime()
         {
-            return GetIntegerValueFromEnumeratedValue(CoinValue.Dime);
+            return this.GetIntegerValueFromEnumeratedValue(CoinValue.Dime);
         }
         #endregion
 
-        #region public static int GetValueForQuarter()
-        public static int GetValueForQuarter()
+        #region public int GetValueForQuarter()
+        public int GetValueForQuarter()
         {
-            return GetIntegerValueFromEnumeratedValue(CoinValue.Quarter);
-        }
-        #endregion
-
-
-        #region public static int GetWeightForNickel()
-        public static int GetWeightForNickel()
-        {
-            return GetIntegerValueFromEnumeratedValue(CoinWeight.Nickel);
-        }
-        #endregion
-
-        #region public static int GetWeightForDime()
-        public static int GetWeightForDime()
-        {
-            return GetIntegerValueFromEnumeratedValue(CoinWeight.Dime);
-        }
-        #endregion
-
-        #region public static int GetWeightForQuarter()
-        public static int GetWeightForQuarter()
-        {
-            return GetIntegerValueFromEnumeratedValue(CoinWeight.Quarter);
+            return this.GetIntegerValueFromEnumeratedValue(CoinValue.Quarter);
         }
         #endregion
 
 
-        #region public static int GetSizeForNickel()
-        public static int GetSizeForNickel()
+        #region public int GetWeightForNickel()
+        public int GetWeightForNickel()
         {
-            return GetIntegerValueFromEnumeratedValue(CoinSize.Nickel);
+            return this.GetIntegerValueFromEnumeratedValue(CoinWeight.Nickel);
         }
         #endregion
 
-        #region public static int GetSizeForDime()
-        public static int GetSizeForDime()
+        #region public int GetWeightForDime()
+        public int GetWeightForDime()
         {
-            return GetIntegerValueFromEnumeratedValue(CoinSize.Dime);
+            return this.GetIntegerValueFromEnumeratedValue(CoinWeight.Dime);
         }
         #endregion
 
-        #region public static int GetSizeForQuarter()
-        public static int GetSizeForQuarter()
+        #region public int GetWeightForQuarter()
+        public int GetWeightForQuarter()
         {
-            return GetIntegerValueFromEnumeratedValue(CoinSize.Quarter);
+            return this.GetIntegerValueFromEnumeratedValue(CoinWeight.Quarter);
         }
         #endregion
 
 
-        #region private static int GetIntegerValueFromEnumeratedValue(CoinValue Value)
-        private static int GetIntegerValueFromEnumeratedValue(CoinValue Value)
+        #region public int GetSizeForNickel()
+        public int GetSizeForNickel()
+        {
+            return this.GetIntegerValueFromEnumeratedValue(CoinSize.Nickel);
+        }
+        #endregion
+
+        #region public int GetSizeForDime()
+        public int GetSizeForDime()
+        {
+            return this.GetIntegerValueFromEnumeratedValue(CoinSize.Dime);
+        }
+        #endregion
+
+        #region public int GetSizeForQuarter()
+        public int GetSizeForQuarter()
+        {
+            return this.GetIntegerValueFromEnumeratedValue(CoinSize.Quarter);
+        }
+        #endregion
+
+
+        #region private int GetIntegerValueFromEnumeratedValue(CoinValue Value)
+        private int GetIntegerValueFromEnumeratedValue(CoinValue Value)
         {
             string strValue = string.Empty;
             if (Value == CoinValue.Nickel)
@@ -126,13 +126,13 @@ namespace VendingMachine
                 throw new ArgumentOutOfRangeException("The GetIntegerValueFromEnumeratedValue() was given an invalid argument");
             }
 
-            return ParseIntegerFromString(strValue);
+            return this.ParseIntegerFromString(strValue);
 
         }
         #endregion
 
-        #region private static int GetIntegerValueFromEnumeratedValue(CoinWeight Weight)
-        private static int GetIntegerValueFromEnumeratedValue(CoinWeight Weight)
+        #region private int GetIntegerValueFromEnumeratedValue(CoinWeight Weight)
+        private int GetIntegerValueFromEnumeratedValue(CoinWeight Weight)
         {
             string strValue = string.Empty;
             if (Weight == CoinWeight.Nickel)
@@ -152,13 +152,13 @@ namespace VendingMachine
                 throw new ArgumentOutOfRangeException("The GetIntegerValueFromEnumeratedValue() was given an invalid argument");
             }
 
-            return ParseIntegerFromString(strValue);
+            return this.ParseIntegerFromString(strValue);
 
         }
         #endregion
 
-        #region private static int GetIntegerValueFromEnumeratedValue(CoinSize Size)
-        private static int GetIntegerValueFromEnumeratedValue(CoinSize Size)
+        #region private int GetIntegerValueFromEnumeratedValue(CoinSize Size)
+        private int GetIntegerValueFromEnumeratedValue(CoinSize Size)
         {
             string strValue = string.Empty;
             if (Size == CoinSize.Nickel)
@@ -178,13 +178,13 @@ namespace VendingMachine
                 throw new ArgumentOutOfRangeException("The GetIntegerValueFromEnumeratedValue() was given an invalid argument");
             }
 
-            return ParseIntegerFromString(strValue);
+            return this.ParseIntegerFromString(strValue);
 
         }
         #endregion
 
-        #region private static int ParseIntegerFromString(string InputValue)
-        private static int ParseIntegerFromString(string InputValue)
+        #region private int ParseIntegerFromString(string InputValue)
+        private int ParseIntegerFromString(string InputValue)
         {
             int ReturnValue;
             if (int.TryParse(InputValue, out ReturnValue) == true)
@@ -201,24 +201,24 @@ namespace VendingMachine
 
 
         #region public bool DepositCoin(int CoinSize, int CoinWeight)
-        public static bool DepositCoin(int CoinSize, int CoinWeight, out int Value)
+        public bool DepositCoin(int CoinSize, int CoinWeight, out int Value)
         {
             Value = 0;
-            if (Coin.IsValidCoin(CoinSize, CoinWeight))
+            if (this.IsValidCoin(CoinSize, CoinWeight))
             {
-                if (CoinSize == Coin.GetSizeForNickel())
+                if (CoinSize == this.GetSizeForNickel())
                 {
-                    Value = Coin.GetValueForNickel();
+                    Value = this.GetValueForNickel();
                     return true;
                 }
-                else if (CoinSize == Coin.GetSizeForDime())
+                else if (CoinSize == this.GetSizeForDime())
                 {
-                    Value = Coin.GetValueForDime();
+                    Value = this.GetValueForDime();
                     return true;
                 }
-                else if (CoinSize == Coin.GetSizeForQuarter())
+                else if (CoinSize == this.GetSizeForQuarter())
                 {
-                    Value = Coin.GetValueForQuarter();
+                    Value = this.GetValueForQuarter();
                     return true;
                 }
                 else
@@ -233,18 +233,18 @@ namespace VendingMachine
         }
         #endregion
 
-        #region public static bool IsValidCoin(int size, int weight)
-        public static bool IsValidCoin(int size, int weight)
+        #region public bool IsValidCoin(int size, int weight)
+        public bool IsValidCoin(int size, int weight)
         {
-            if (size == GetSizeForNickel() && weight == GetWeightForNickel())
+            if (size == this.GetSizeForNickel() && weight == this.GetWeightForNickel())
             {
                 return true;
             }
-            else if (size == GetSizeForDime() && weight == GetWeightForDime())
+            else if (size == this.GetSizeForDime() && weight == this.GetWeightForDime())
             {
                 return true;
             }
-            else if (size == GetSizeForQuarter() && weight == GetWeightForQuarter())
+            else if (size == this.GetSizeForQuarter() && weight == this.GetWeightForQuarter())
             {
                 return true;
             }

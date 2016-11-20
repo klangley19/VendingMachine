@@ -15,7 +15,7 @@ namespace VendingMachine
     }
     #endregion
 
-    public static class Product
+    public class Product : IProduct
     {
 
         #region private constants for the product cost
@@ -24,55 +24,55 @@ namespace VendingMachine
         private const int ColaCostAmount = 100;
         #endregion
 
-        #region private static readonly member variables
-        private static readonly int CandyCost;
-        private static readonly int ChipsCost;
-        private static readonly int ColaCost;
+        #region private readonly member variables
+        private readonly int CandyCost;
+        private readonly int ChipsCost;
+        private readonly int ColaCost;
         #endregion
 
-        #region static Product()
-        static Product()
+        #region public Product()
+        public Product()
         {
-            Product.CandyCost = CandyCostAmount;
-            Product.ChipsCost = ChipsCostAmount;
-            Product.ColaCost = ColaCostAmount;
+            this.CandyCost = CandyCostAmount;
+            this.ChipsCost = ChipsCostAmount;
+            this.ColaCost = ColaCostAmount;
         }
         #endregion
 
 
 
-        #region public static int GetCostForACola()
-        public static int GetCostForACola()
+        #region public int GetCostForACola()
+        public int GetCostForACola()
         {
-            return Product.ColaCost;
+            return this.ColaCost;
         }
         #endregion
 
-        #region public static int GetCostForACandy()
-        public static int GetCostForACandy()
+        #region public int GetCostForACandy()
+        public int GetCostForACandy()
         {
-            return Product.CandyCost;
+            return this.CandyCost;
         }
         #endregion
 
-        #region public static int GetCostForABagOfChips()
-        public static int GetCostForABagOfChips()
+        #region public int GetCostForABagOfChips()
+        public int GetCostForABagOfChips()
         {
-            return Product.ChipsCost;
+            return this.ChipsCost;
         }
         #endregion
 
 
-        #region public static bool Dispense(Products product)
-        public static bool Dispense(Products product, int AmountInVendingMachine, out int ProductPrice, out Change change)
+        #region public bool Dispense(Products product)
+        public bool Dispense(Products product, int AmountInVendingMachine, out int ProductPrice, out Change change)
         {
             change = new Change();
-            ProductPrice = Product.GetTheCostForAProduct(product);
+            ProductPrice = this.GetTheCostForAProduct(product);
 
             if (AmountInVendingMachine >= ProductPrice)
             {
                 AmountInVendingMachine -= ProductPrice;
-                change = Product.HandleMakingChangeAfterPurchase(AmountInVendingMachine);
+                change = this.HandleMakingChangeAfterPurchase(AmountInVendingMachine);
                 AmountInVendingMachine = 0;
                 return true;
             }
@@ -82,8 +82,8 @@ namespace VendingMachine
         #endregion
 
 
-        #region private static Change HandleMakingChangeAfterPurchase(int Amount)
-        private static Change HandleMakingChangeAfterPurchase(int Amount)
+        #region private Change HandleMakingChangeAfterPurchase(int Amount)
+        private Change HandleMakingChangeAfterPurchase(int Amount)
         {
             Change change = new Change();
             decimal decimalAmount = System.Convert.ToDecimal(Amount) / 100m;
@@ -92,20 +92,20 @@ namespace VendingMachine
         }
         #endregion
 
-        #region private static int GetTheCostForAProduct(Products product)
-        private static int GetTheCostForAProduct(Products product)
+        #region private int GetTheCostForAProduct(Products product)
+        private int GetTheCostForAProduct(Products product)
         {
             if (product == Products.Cola)
             {
-                return Product.GetCostForACola();
+                return this.GetCostForACola();
             }
             else if (product == Products.Candy)
             {
-                return Product.GetCostForACandy();
+                return this.GetCostForACandy();
             }
             else if (product == Products.Chips)
             {
-                return Product.GetCostForABagOfChips();
+                return this.GetCostForABagOfChips();
             }
             else
             {

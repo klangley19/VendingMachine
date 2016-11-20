@@ -16,6 +16,7 @@ namespace VendingMachineUnitTests.Mocks
         bool AddNickelToVendingMachine();
         bool AddDimeToVendingMachine();
         bool AddQuarterToVendingMachine();
+        bool DepositCoin(int CoinSize, int CoinWeight);
         int GetVendingMachineCoinValueInCents();
         string GetVendingMachineDisplay();
         bool Dispense(Products product);
@@ -51,6 +52,11 @@ namespace VendingMachineUnitTests.Mocks
         public bool AddQuarterToVendingMachine()
         {
             return this._dependency.AddQuarterToVendingMachine();
+        }
+
+        public bool DepositCoin(int CoinSize, int CoinWeight)
+        {
+            return this._dependency.DepositCoin(CoinSize, CoinWeight);
         }
 
         public int GetVendingMachineCoinValueInCents()
@@ -104,21 +110,35 @@ namespace VendingMachineUnitTests.Mocks
     #region public class MockVendingMachineDependency : IVendingMachineDependency
     public class MockVendingMachineDependency : IVendingMachineDependency
     {
-        private VendingMachine.VendingMachine machine = new VendingMachine.VendingMachine();
+        public MockVendingMachineDependency()
+        {
+            ICoin Coin = new Coin();
+            IProduct Product = new Product();
+            machine = new VendingMachine.VendingMachine(Coin, Product);
+            this.Coin = Coin as Coin;
+        }
+
+        private Coin Coin;
+        private VendingMachine.VendingMachine machine;
 
         public bool AddNickelToVendingMachine()
         {
-            return machine.DepositCoin(Coin.GetSizeForNickel(), Coin.GetWeightForNickel());
+            return machine.DepositCoin(this.Coin.GetSizeForNickel(), this.Coin.GetWeightForNickel());
         }
 
         public bool AddDimeToVendingMachine()
         {
-            return machine.DepositCoin(Coin.GetSizeForDime(), Coin.GetWeightForDime());
+            return machine.DepositCoin(this.Coin.GetSizeForDime(), this.Coin.GetWeightForDime());
         }
 
         public bool AddQuarterToVendingMachine()
         {
-            return machine.DepositCoin(Coin.GetSizeForQuarter(), Coin.GetWeightForQuarter());
+            return machine.DepositCoin(this.Coin.GetSizeForQuarter(), this.Coin.GetWeightForQuarter());
+        }
+
+        public bool DepositCoin(int CoinSize, int CoinWeight)
+        {
+            return machine.DepositCoin(CoinSize, CoinWeight);
         }
 
         public int GetVendingMachineCoinValueInCents()

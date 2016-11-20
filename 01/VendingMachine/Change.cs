@@ -9,6 +9,7 @@ namespace VendingMachine
     public class Change
     {
         //public member properties
+        Coin Coin = new Coin();
         public int Quarters { get; set; }
         public int Dimes { get; set; }
         public int Nickels { get; set; }
@@ -18,7 +19,7 @@ namespace VendingMachine
         {
             get
             {
-                return (this.Quarters * Coin.GetValueForQuarter()) + (this.Dimes * Coin.GetValueForDime()) + (this.Nickels * Coin.GetValueForNickel());
+                return (this.Quarters * this.Coin.GetValueForQuarter()) + (this.Dimes * this.Coin.GetValueForDime()) + (this.Nickels * this.Coin.GetValueForNickel());
             }
         }
         #endregion

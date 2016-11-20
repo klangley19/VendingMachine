@@ -8,8 +8,37 @@ namespace VendingMachine
 {
     public class VendingMachine
     {
+        
+        //public class constructors
+        #region public VendingMachine(ICoin Coin, IProduct Product)
+        public VendingMachine(ICoin Coin, IProduct Product)
+        {
+            if (Coin is Coin)
+                this.Coin = Coin as Coin;
+            else
+                this.Coin = new Coin();
+
+            if (Product is Product)
+                this.Product = Product as Product;
+            else
+                this.Product = new Product();
+
+        }
+        #endregion
+
+        #region public VendingMachine()
+        public VendingMachine()
+        {
+            this.Coin = new Coin();
+            this.Product = new Product();
+        }
+        #endregion
+
 
         //private member variables
+        Coin Coin;
+        Product Product;
+
         private Change ChangeInMachine = new Change();
         private Change LatestChangeMadeAfterPurchase = new Change();
         private string DisplayMessage = "INSERT COIN";
@@ -101,7 +130,7 @@ namespace VendingMachine
 
             try
             {
-                bool returnValue = Coin.DepositCoin(CoinSize, CoinWeight, out CoinValue);
+                bool returnValue = this.Coin.DepositCoin(CoinSize, CoinWeight, out CoinValue);
                 this.AddCoinToChangeInMachineObject(CoinValue);
                 this.UpdateDisplay();
                 return returnValue;
@@ -141,7 +170,7 @@ namespace VendingMachine
                 }
                 else
                 {
-                    returnValue = Product.Dispense(product, this.ChangeInMachine.ChangeInMachineValue, out productPrice, out change);
+                    returnValue = this.Product.Dispense(product, this.ChangeInMachine.ChangeInMachineValue, out productPrice, out change);
                     if (returnValue)
                     {
                         this.AdjustInventoryForProductToDispense(product);
@@ -259,11 +288,11 @@ namespace VendingMachine
         #region private void AddCoinToChangeInMachineObject(int CoinValue)
         private void AddCoinToChangeInMachineObject(int CoinValue)
         {
-            if (CoinValue == Coin.GetValueForNickel())
+            if (CoinValue == this.Coin.GetValueForNickel())
                 this.ChangeInMachine.Nickels++;
-            else if (CoinValue == Coin.GetValueForDime())
+            else if (CoinValue == this.Coin.GetValueForDime())
                 this.ChangeInMachine.Dimes++;
-            else if (CoinValue == Coin.GetValueForQuarter())
+            else if (CoinValue == this.Coin.GetValueForQuarter())
                 this.ChangeInMachine.Quarters++;
         }
         #endregion
@@ -317,17 +346,17 @@ namespace VendingMachine
             }
             else if (product == Products.Candy)
             {
-                if (Product.GetCostForACandy() == this.ChangeInMachine.ChangeInMachineValue)
+                if (this.Product.GetCostForACandy() == this.ChangeInMachine.ChangeInMachineValue)
                     return true;
             }
             else if (product == Products.Chips)
             {
-                if (Product.GetCostForABagOfChips() == this.ChangeInMachine.ChangeInMachineValue)
+                if (this.Product.GetCostForABagOfChips() == this.ChangeInMachine.ChangeInMachineValue)
                     return true;
             }
             else if (product == Products.Cola)
             {
-                if (Product.GetCostForACola() == this.ChangeInMachine.ChangeInMachineValue)
+                if (this.Product.GetCostForACola() == this.ChangeInMachine.ChangeInMachineValue)
                     return true;
             }
             return false;

@@ -9,24 +9,26 @@ namespace VendingMachineUnitTests
     [TestClass]
     public class SelectProductUnitTests
     {
+        Product Product = new Product();
+
         [TestMethod]
         public void Get_The_Cost_For_A_Cola_Is_Not_One_Dollar()
         {
-            var productCost = Product.GetCostForACola();
+            var productCost = this.Product.GetCostForACola();
             Assert.AreEqual(100, productCost);
         }
 
         [TestMethod]
         public void Get_The_Cost_For_A_Candy_Is_Not_Sixty_Five_Cents()
         {
-            var productCost = Product.GetCostForACandy();
+            var productCost = this.Product.GetCostForACandy();
             Assert.AreEqual(65, productCost);
         }
 
         [TestMethod]
         public void Get_The_Cost_For_A_Bag_Of_Chips_Is_Not_FIfty_Cents()
         {
-            var productCost = Product.GetCostForABagOfChips();
+            var productCost = this.Product.GetCostForABagOfChips();
             Assert.AreEqual(50, productCost);
         }
 
