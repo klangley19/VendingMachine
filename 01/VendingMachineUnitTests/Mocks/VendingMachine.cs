@@ -23,7 +23,6 @@ namespace VendingMachineUnitTests.Mocks
         Change LatestChangeMade();
         Change GetChangeInVendingMachine();
         bool ReturnChangeInVendingMachine();
-        Inventory GetInventoryLevels();
         void SetExactChange(bool setting);
     }
     #endregion
@@ -88,10 +87,6 @@ namespace VendingMachineUnitTests.Mocks
             return this._dependency.ReturnChangeInVendingMachine();
         }
 
-        public Inventory GetInventoryLevels()
-        {
-            return this._dependency.GetInventoryLevels();
-        }
 
         public void SetExactChange(bool setting)
         {
@@ -173,11 +168,6 @@ namespace VendingMachineUnitTests.Mocks
         public bool ReturnChangeInVendingMachine()
         {
             return machine.ReturnChangeInVendingMachine();
-        }
-
-        public Inventory GetInventoryLevels()
-        {
-            return machine.InventoryInVendingMachine;
         }
 
         public void SetExactChange(bool setting)

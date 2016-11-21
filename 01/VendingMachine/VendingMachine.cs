@@ -119,13 +119,6 @@ namespace VendingMachine
         #endregion
 
 
-        #region public Inventory InventoryInVendingMachine
-        //this property is here for testing, otherwise it is not needed
-        public Inventory InventoryInVendingMachine
-        {
-            get { return this.Inventory; }
-        }
-        #endregion
 
         #region public Change LatestChangeMade
         //this property is here for testing, otherwise it is not needed
