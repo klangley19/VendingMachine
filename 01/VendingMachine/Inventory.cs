@@ -38,6 +38,23 @@ namespace VendingMachine
             set { this._colaQuantity = value; }
         }
 
+
+        #region public Inventory()
+        public Inventory()
+        { }
+        #endregion
+
+        #region public Inventory(int CandyAmount, int ChipAmount, int ColaAmount)
+        public Inventory(int CandyAmount, int ChipAmount, int ColaAmount)
+        {
+            this._candyQuantity = CandyAmount;
+            this._chipQuantity = ChipAmount;
+            this._colaQuantity = ColaAmount;
+        }
+        #endregion
+
+
+
         #region public DispenseProductResult DispenseProduct(Products ProductSelection, Product Product, int CentsDepositedInMachine, bool ExactChangeRequired)
         public DispenseProductResult DispenseProduct(Products ProductSelection, IProduct Product, int CentsDepositedInMachine, bool ExactChangeRequired)
         {
@@ -71,6 +88,7 @@ namespace VendingMachine
 
         }
         #endregion
+
 
 
         #region private bool ProductIsAvailableInInventory(Products product)

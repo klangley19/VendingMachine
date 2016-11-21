@@ -72,19 +72,6 @@ namespace VendingMachine
         }
         #endregion
 
-        #region public Change LatestChangeMade
-        public Change LatestChangeMade
-        {
-            get
-            {
-                return this.LatestChangeMadeAfterPurchase;
-            }
-            private set
-            {
-                this.LatestChangeMadeAfterPurchase = value;
-            }
-        }
-        #endregion
 
         #region public int DepositedValueInMachine
         public int DepositedValueInMachine
@@ -137,10 +124,23 @@ namespace VendingMachine
         public Inventory InventoryInVendingMachine
         {
             get { return this.Inventory; }
-            set { this.Inventory = value; }
         }
         #endregion
 
+        #region public Change LatestChangeMade
+        //this property is here for testing, otherwise it is not needed
+        public Change LatestChangeMade
+        {
+            get
+            {
+                return this.LatestChangeMadeAfterPurchase;
+            }
+            private set
+            {
+                this.LatestChangeMadeAfterPurchase = value;
+            }
+        }
+        #endregion
 
 
         //public class member functions

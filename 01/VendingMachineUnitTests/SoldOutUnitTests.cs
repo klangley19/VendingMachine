@@ -13,7 +13,8 @@ namespace VendingMachineUnitTests
         [TestMethod]
         public void CheckInitialInventoryLevelsInTheVendingMachine()
         {
-            MockVendingMachineDependency dependency = new MockVendingMachineDependency();
+            
+            MockVendingMachineDependency dependency = new MockVendingMachineDependency(new Inventory());
             VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
 
             Inventory i = dependentClass.GetInventoryLevels();
@@ -28,15 +29,10 @@ namespace VendingMachineUnitTests
         public void CheckChangingInventoryLevelsInTheVendingMachine()
         {
 
-            MockVendingMachineDependency dependency = new MockVendingMachineDependency();
+            MockVendingMachineDependency dependency = new MockVendingMachineDependency(new Inventory(1,1,1));
             VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
 
             Inventory i = dependentClass.GetInventoryLevels();
-
-            i.CandyQuantity = 1;
-            i.ChipQuantity = 1;
-            i.ColaQuantity = 1;
-            dependentClass.SetInventoryLevels(i);
 
             Assert.AreEqual(1, i.CandyQuantity);
             Assert.AreEqual(1, i.ChipQuantity);
@@ -47,8 +43,8 @@ namespace VendingMachineUnitTests
         [TestMethod]
         public void Buy_Cola_And_Check_Inventory_Level_Going_Down_By_One()
         {
-
-            MockVendingMachineDependency dependency = new MockVendingMachineDependency();
+            Inventory presale_inventory_level = new Inventory(10, 10, 10);
+            MockVendingMachineDependency dependency = new MockVendingMachineDependency(presale_inventory_level);
             VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
 
             bool result1, result2, result3, result4, result5, result6;
@@ -57,15 +53,8 @@ namespace VendingMachineUnitTests
             string vendingMachineMessage;
             string vendingMachineFollowUpMessage;
             int vendingMacineValue;
-            Inventory presale_inventory_level;
             Inventory postsale_inventory_level;
 
-
-            presale_inventory_level = new Inventory();
-            presale_inventory_level.CandyQuantity = 10;
-            presale_inventory_level.ChipQuantity = 10;
-            presale_inventory_level.ColaQuantity = 10;
-            dependentClass.SetInventoryLevels(presale_inventory_level);
 
             PresaleCandyInventory = presale_inventory_level.CandyQuantity;
             PresaleChipInventory = presale_inventory_level.ChipQuantity;
@@ -105,8 +94,8 @@ namespace VendingMachineUnitTests
         [TestMethod]
         public void Buy_Bag_Of_Chips_And_Check_Inventory_Level_Going_Down_By_One()
         {
-
-            MockVendingMachineDependency dependency = new MockVendingMachineDependency();
+            Inventory presale_inventory_level = new Inventory(10, 10, 10);
+            MockVendingMachineDependency dependency = new MockVendingMachineDependency(presale_inventory_level);
             VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
 
             bool result1, result2, result3, result4, result5, result6;
@@ -115,15 +104,8 @@ namespace VendingMachineUnitTests
             string vendingMachineMessage;
             string vendingMachineFollowUpMessage;
             int vendingMacineValue;
-            Inventory presale_inventory_level;
             Inventory postsale_inventory_level;
 
-
-            presale_inventory_level = new Inventory();
-            presale_inventory_level.CandyQuantity = 10;
-            presale_inventory_level.ChipQuantity = 10;
-            presale_inventory_level.ColaQuantity = 10;
-            dependentClass.SetInventoryLevels(presale_inventory_level);
 
             PresaleCandyInventory = presale_inventory_level.CandyQuantity;
             PresaleChipInventory = presale_inventory_level.ChipQuantity;
@@ -166,7 +148,8 @@ namespace VendingMachineUnitTests
         public void Buy_Candy_And_Check_Inventory_Level_Going_Down_By_One()
         {
 
-            MockVendingMachineDependency dependency = new MockVendingMachineDependency();
+            Inventory presale_inventory_level = new Inventory(10, 10, 10);
+            MockVendingMachineDependency dependency = new MockVendingMachineDependency(presale_inventory_level);
             VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
 
             bool result1, result2, result3, result4, result5, result6;
@@ -175,15 +158,8 @@ namespace VendingMachineUnitTests
             string vendingMachineMessage;
             string vendingMachineFollowUpMessage;
             int vendingMacineValue;
-            Inventory presale_inventory_level;
             Inventory postsale_inventory_level;
 
-
-            presale_inventory_level = new Inventory();
-            presale_inventory_level.CandyQuantity = 10;
-            presale_inventory_level.ChipQuantity = 10;
-            presale_inventory_level.ColaQuantity = 10;
-            dependentClass.SetInventoryLevels(presale_inventory_level);
 
             PresaleCandyInventory = presale_inventory_level.CandyQuantity;
             PresaleChipInventory = presale_inventory_level.ChipQuantity;
@@ -225,7 +201,8 @@ namespace VendingMachineUnitTests
         public void Buy_Cola_When_No_Product_Is_Available_And_Check_Returning_Change_And_Display_Message()
         {
 
-            MockVendingMachineDependency dependency = new MockVendingMachineDependency();
+            Inventory presale_inventory_level = new Inventory(3, 3, 0);
+            MockVendingMachineDependency dependency = new MockVendingMachineDependency(presale_inventory_level);
             VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
 
             bool result1, result2, result3, result4, result5, result6;
@@ -235,15 +212,7 @@ namespace VendingMachineUnitTests
             string vendingMachineFollowUpMessage;
             string vendingMachineFollowUpMessageExpected;
             int vendingMacineValue;
-            Inventory presale_inventory_level;
             Inventory postsale_inventory_level;
-
-
-            presale_inventory_level = new Inventory();
-            presale_inventory_level.CandyQuantity = 3;
-            presale_inventory_level.ChipQuantity = 3;
-            presale_inventory_level.ColaQuantity = 0;
-            dependentClass.SetInventoryLevels(presale_inventory_level);
 
             PresaleCandyInventory = presale_inventory_level.CandyQuantity;
             PresaleChipInventory = presale_inventory_level.ChipQuantity;
@@ -289,7 +258,8 @@ namespace VendingMachineUnitTests
         public void Buy_Cola_When_No_Product_Is_Available_No_Money_Added_And_Check_Returning_Change_And_Display_Message()
         {
 
-            MockVendingMachineDependency dependency = new MockVendingMachineDependency();
+            Inventory presale_inventory_level = new Inventory(3, 3, 0);
+            MockVendingMachineDependency dependency = new MockVendingMachineDependency(presale_inventory_level);
             VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
 
             bool productDispensed;
@@ -297,14 +267,7 @@ namespace VendingMachineUnitTests
             string vendingMachineFollowUpMessage;
             int vendingMacineValue;
 
-            Inventory presale_inventory_level = new Inventory();
-            presale_inventory_level.CandyQuantity = 3;
-            presale_inventory_level.ChipQuantity = 3;
-            presale_inventory_level.ColaQuantity = 0;
-            dependentClass.SetInventoryLevels(presale_inventory_level);
-
             Inventory postsale_inventory_level;
-
 
             productDispensed = dependentClass.Dispense(Products.Cola);
             vendingMachineMessage = dependentClass.GetVendingMachineDisplay();
