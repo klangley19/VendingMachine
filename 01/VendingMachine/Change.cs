@@ -9,10 +9,11 @@ namespace VendingMachine
     public class Change
     {
         //public member properties
-        Coin Coin = new Coin();
         public int Quarters { get; set; }
         public int Dimes { get; set; }
         public int Nickels { get; set; }
+
+        private Coin Coin = new Coin();
 
         #region public int ChangeInMachineValue
         public int ChangeInMachineValue
