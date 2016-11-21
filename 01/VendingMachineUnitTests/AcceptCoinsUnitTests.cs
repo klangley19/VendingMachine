@@ -312,5 +312,40 @@ namespace VendingMachineUnitTests
             Assert.AreEqual(80, value6);
         }
 
+        [TestMethod]
+        public void Be_Sure_When_An_Invalid_Coin_Is_Attempted_To_Be_Inserted_That_Display_And_Value_In_Vending_Machine_Stay_The_Same()
+        {
+            MockVendingMachineDependency dependency = new MockVendingMachineDependency();
+            VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
+
+            bool coinDeposited;
+            bool result1, result2, result3, result4, result5, result6;
+            string vendingMachineMessageBeforeInvalidCoinDeposit;
+            string vendingMachineMessageAfterInvalidCoinDeposit;
+            int vendingMacineValueBeforeInvalidCoinDeposit;
+            int vendingMacineValueAfterInvalidCoinDeposit;
+
+            result1 = dependentClass.AddNickelToVendingMachine();
+            result2 = dependentClass.AddDimeToVendingMachine();
+            result3 = dependentClass.AddQuarterToVendingMachine();
+
+            result4 = dependentClass.AddNickelToVendingMachine();
+            result5 = dependentClass.AddDimeToVendingMachine();
+            result6 = dependentClass.AddQuarterToVendingMachine();
+
+            vendingMachineMessageBeforeInvalidCoinDeposit = dependentClass.GetVendingMachineDisplay();
+            vendingMacineValueBeforeInvalidCoinDeposit = dependentClass.GetVendingMachineCoinValueInCents();
+
+
+            coinDeposited = dependentClass.DepositCoin(67, 85);
+
+            vendingMachineMessageAfterInvalidCoinDeposit = dependentClass.GetVendingMachineDisplay();
+            vendingMacineValueAfterInvalidCoinDeposit = dependentClass.GetVendingMachineCoinValueInCents();
+
+            Assert.AreEqual(vendingMachineMessageBeforeInvalidCoinDeposit, vendingMachineMessageAfterInvalidCoinDeposit);
+            Assert.AreEqual(vendingMacineValueBeforeInvalidCoinDeposit, vendingMacineValueAfterInvalidCoinDeposit);
+
+        }
+
     }
 }
