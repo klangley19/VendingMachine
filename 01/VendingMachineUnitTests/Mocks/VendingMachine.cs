@@ -99,13 +99,9 @@ namespace VendingMachineUnitTests.Mocks
     #region public class MockVendingMachineDependency : IVendingMachineDependency
     public class MockVendingMachineDependency : IVendingMachineDependency
     {
-        public MockVendingMachineDependency()
+        public MockVendingMachineDependency() : this(new Inventory())
         {
-            ICoin Coin = new Coin();
-            IProduct Product = new Product();
-            IInventory Inventory = new Inventory();
-            machine = new VendingMachine.VendingMachine(Coin, Product, Inventory);
-            this.Coin = Coin as Coin;
+
         }
 
         public MockVendingMachineDependency(IInventory inventory)
