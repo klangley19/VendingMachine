@@ -62,38 +62,8 @@ namespace VendingMachine
         }
         #endregion
 
-
-        #region public bool Dispense(Products product)
-        public bool Dispense(Products product, int AmountInVendingMachine, out int ProductPrice, out Change change)
-        {
-            change = new Change();
-            ProductPrice = this.GetTheCostForAProduct(product);
-
-            if (AmountInVendingMachine >= ProductPrice)
-            {
-                AmountInVendingMachine -= ProductPrice;
-                change = this.HandleMakingChangeAfterPurchase(AmountInVendingMachine);
-                AmountInVendingMachine = 0;
-                return true;
-            }
-            return false;
-
-        }
-        #endregion
-
-
-        #region private Change HandleMakingChangeAfterPurchase(int Amount)
-        private Change HandleMakingChangeAfterPurchase(int Amount)
-        {
-            Change change = new Change();
-            decimal decimalAmount = System.Convert.ToDecimal(Amount) / 100m;
-            change.MakeChange(decimalAmount);
-            return change;
-        }
-        #endregion
-
-        #region private int GetTheCostForAProduct(Products product)
-        private int GetTheCostForAProduct(Products product)
+        #region public int GetTheCostForAProduct(Products product)
+        public int GetTheCostForAProduct(Products product)
         {
             if (product == Products.Cola)
             {
@@ -114,6 +84,8 @@ namespace VendingMachine
 
         }
         #endregion
+
+
 
     }
 }

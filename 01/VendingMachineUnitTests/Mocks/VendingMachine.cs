@@ -114,7 +114,8 @@ namespace VendingMachineUnitTests.Mocks
         {
             ICoin Coin = new Coin();
             IProduct Product = new Product();
-            machine = new VendingMachine.VendingMachine(Coin, Product);
+            IInventory Inventory = new Inventory();
+            machine = new VendingMachine.VendingMachine(Coin, Product, Inventory);
             this.Coin = Coin as Coin;
         }
 

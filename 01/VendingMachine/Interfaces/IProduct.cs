@@ -11,6 +11,6 @@ namespace VendingMachine
         int GetCostForACola();
         int GetCostForACandy();
         int GetCostForABagOfChips();
-        bool Dispense(Products product, int AmountInVendingMachine, out int ProductPrice, out Change change);
+        int GetTheCostForAProduct(Products product);
     }
 }

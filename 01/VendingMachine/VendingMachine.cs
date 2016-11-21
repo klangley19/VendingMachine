@@ -6,12 +6,24 @@ using System.Threading.Tasks;
 
 namespace VendingMachine
 {
+
+    #region public enum DispenseProductResult
+    public enum DispenseProductResult
+    {
+        NotExactChangeMade,
+        ProductNotAvailableInInventory,
+        NotEnoughMoneyForProductDepositedInVendingMachine,
+        DispenseProduct,
+        Undefined
+    }
+    #endregion
+
     public class VendingMachine
     {
         
         //public class constructors
         #region public VendingMachine(ICoin Coin, IProduct Product)
-        public VendingMachine(ICoin Coin, IProduct Product)
+        public VendingMachine(ICoin Coin, IProduct Product, IInventory Inventory)
         {
             if (Coin is Coin)
                 this.Coin = Coin as Coin;
@@ -23,6 +35,12 @@ namespace VendingMachine
             else
                 this.Product = new Product();
 
+            if (Inventory is Inventory)
+                this.Inventory = Inventory as Inventory;
+            else
+                this.Inventory = new Inventory();
+
+
         }
         #endregion
 
@@ -31,18 +49,19 @@ namespace VendingMachine
         {
             this.Coin = new Coin();
             this.Product = new Product();
+            this.Inventory = new Inventory();
         }
         #endregion
 
 
         //private member variables
-        Coin Coin;
-        Product Product;
+        private Coin Coin;
+        private Product Product;
+        private Inventory Inventory;
 
         private Change ChangeInMachine = new Change();
         private Change LatestChangeMadeAfterPurchase = new Change();
         private string DisplayMessage = "INSERT COIN";
-        private Inventory CurrentInventoryLevel = new Inventory();
         private bool RequireExactChange = false;
 
         //public class properties
@@ -67,7 +86,6 @@ namespace VendingMachine
         }
         #endregion
 
-
         #region public int DepositedValueInMachine
         public int DepositedValueInMachine
         {
@@ -87,14 +105,6 @@ namespace VendingMachine
                 this.UpdateDisplay();
                 return initialValue;
             }
-        }
-        #endregion
-
-        #region public Inventory InventoryInVendingMachine
-        public Inventory InventoryInVendingMachine
-        {
-            get { return this.CurrentInventoryLevel; }
-            set { this.CurrentInventoryLevel = value; }
         }
         #endregion
 
@@ -122,6 +132,17 @@ namespace VendingMachine
         #endregion
 
 
+        #region public Inventory InventoryInVendingMachine
+        //this property is here for testing, otherwise it is not needed
+        public Inventory InventoryInVendingMachine
+        {
+            get { return this.Inventory; }
+            set { this.Inventory = value; }
+        }
+        #endregion
+
+
+
         //public class member functions
         #region public bool DepositCoin(int CoinSize, int CoinWeight)
         public bool DepositCoin(int CoinSize, int CoinWeight)
@@ -131,8 +152,11 @@ namespace VendingMachine
             try
             {
                 bool returnValue = this.Coin.DepositCoin(CoinSize, CoinWeight, out CoinValue);
-                this.AddCoinToChangeInMachineObject(CoinValue);
-                this.UpdateDisplay();
+                if (returnValue)
+                {
+                    this.AddCoinToChangeInMachineObject(CoinValue);
+                    this.UpdateDisplay();
+                }
                 return returnValue;
             }
             catch (ArgumentOutOfRangeException e)
@@ -153,36 +177,35 @@ namespace VendingMachine
         {
             try
             {
-                bool returnValue;
-                int productPrice;
-                Change change;
+                bool returnValue = false;
 
-                //first check inventory to be sure we have it
-                if (this.CheckInventoryForProductToDispense(product) == false)
-                {
-                    this.DisplayMessage = "SOLD OUT";
-                    returnValue = false;
-                }
-                else if (this.MakeSureExactAmountIsDepositedIfRequired(product) == false)
+                DispenseProductResult result = this.Inventory.DispenseProduct(product, this.Product, this.ChangeInMachine.ChangeInMachineValue, this.RequireExactChange);
+
+                if (result == DispenseProductResult.NotExactChangeMade)
                 {
                     this.DisplayMessage = "EXACT CHANGE ONLY";
                     returnValue = false;
                 }
-                else
+                else if (result == DispenseProductResult.ProductNotAvailableInInventory)
                 {
-                    returnValue = this.Product.Dispense(product, this.ChangeInMachine.ChangeInMachineValue, out productPrice, out change);
-                    if (returnValue)
-                    {
-                        this.AdjustInventoryForProductToDispense(product);
-                        this.DispenseChange(change);
-                        this.DisplayMessage = "THANK YOU";
-                    }
-                    else
-                    {
-                        this.DisplayMessage = "PRICE :: " + string.Format("{0:C}", System.Convert.ToDecimal(productPrice) / 100m);
-                    }
+                    this.DisplayMessage = "SOLD OUT";
+                    returnValue = false;
+                }
+                else if (result == DispenseProductResult.NotEnoughMoneyForProductDepositedInVendingMachine)
+                {
+                    this.DisplayMessage = "PRICE :: " + string.Format("{0:C}", System.Convert.ToDecimal(Product.GetTheCostForAProduct(product)) / 100m);
+                    returnValue = false;
+                }
+                else if (result == DispenseProductResult.DispenseProduct)
+                {
+                    Change change = this.MakeChangeAfterPurchaseWasMade(product);
+                    this.DispenseChange(change);
+                    this.DisplayMessage = "THANK YOU";
+                    returnValue = true;
                 }
                 return returnValue;
+
+
             }
             catch (ArgumentOutOfRangeException e)
             {
@@ -297,70 +320,13 @@ namespace VendingMachine
         }
         #endregion
 
-        #region private bool CheckInventoryForProductToDispense(Products product)
-        private bool CheckInventoryForProductToDispense(Products product)
+        #region private Change MakeChangeAfterPurchaseWasMade(Products product)
+        private Change MakeChangeAfterPurchaseWasMade(Products product)
         {
-            if (product == Products.Candy && this.InventoryInVendingMachine.CandyQuantity > 0)
-            {
-                return true;
-            }
-            else if (product == Products.Chips && this.InventoryInVendingMachine.ChipQuantity > 0)
-            {
-                return true;
-            }
-            else if (product == Products.Cola && this.InventoryInVendingMachine.ColaQuantity > 0)
-            {
-                return true;
-            }
-            return false;
-
-        }
-        #endregion
-
-        #region private void AdjustInventoryForProductToDispense(Products product)
-        private void AdjustInventoryForProductToDispense(Products product)
-        {
-            if (product == Products.Candy)
-            {
-                this.InventoryInVendingMachine.CandyQuantity--;
-            }
-            else if (product == Products.Chips)
-            {
-                this.InventoryInVendingMachine.ChipQuantity--;
-            }
-            else if (product == Products.Cola)
-            {
-                this.InventoryInVendingMachine.ColaQuantity--;
-            }
-            return;
-
-        }
-        #endregion
-
-        #region private bool MakeSureExactAmountIsDepositedIfRequired(Products product)
-        private bool MakeSureExactAmountIsDepositedIfRequired(Products product)
-        {
-            if (this.RequireExactChange == false)
-            {
-                return true;
-            }
-            else if (product == Products.Candy)
-            {
-                if (this.Product.GetCostForACandy() == this.ChangeInMachine.ChangeInMachineValue)
-                    return true;
-            }
-            else if (product == Products.Chips)
-            {
-                if (this.Product.GetCostForABagOfChips() == this.ChangeInMachine.ChangeInMachineValue)
-                    return true;
-            }
-            else if (product == Products.Cola)
-            {
-                if (this.Product.GetCostForACola() == this.ChangeInMachine.ChangeInMachineValue)
-                    return true;
-            }
-            return false;
-
+            decimal AmountOfChange = System.Convert.ToDecimal(this.ChangeInMachine.ChangeInMachineValue - Product.GetTheCostForAProduct(product))/100;
+            Change change = new Change();
+            change.MakeChange(AmountOfChange);
+            return change;
         }
         #endregion
     }
