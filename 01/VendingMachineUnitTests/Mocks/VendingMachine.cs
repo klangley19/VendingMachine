@@ -21,8 +21,6 @@ namespace VendingMachineUnitTests.Mocks
         string GetVendingMachineDisplay();
         bool Dispense(Products product);
         bool Dispense(Products product, out Change change);
-
-        //Change LatestChangeMade();
         Change GetChangeInVendingMachine();
         bool ReturnChangeInVendingMachine();
         void SetExactChange(bool setting);
@@ -78,12 +76,6 @@ namespace VendingMachineUnitTests.Mocks
         {
             return this._dependency.Dispense(product, out change);
         }
-
-
-        //public Change LatestChangeMade()
-        //{
-        //    return this._dependency.LatestChangeMade();
-        //}
 
         public Change GetChangeInVendingMachine()
         {
@@ -167,12 +159,6 @@ namespace VendingMachineUnitTests.Mocks
         {
             return machine.Dispense(product, out change);
         }
-
-
-        //public Change LatestChangeMade()
-        //{
-        //    return machine.LatestChangeMade;
-        //}
 
         public Change GetChangeInVendingMachine()
         {

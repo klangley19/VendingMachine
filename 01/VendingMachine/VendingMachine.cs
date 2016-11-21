@@ -20,9 +20,9 @@ namespace VendingMachine
 
     public class VendingMachine
     {
-        
+
         //public class constructors
-        #region public VendingMachine(ICoin Coin, IProduct Product)
+        #region public VendingMachine(ICoin Coin, IProduct Product, IInventory Inventory)
         public VendingMachine(ICoin Coin, IProduct Product, IInventory Inventory)
         {
             if (Coin is Coin)
