@@ -20,7 +20,9 @@ namespace VendingMachineUnitTests.Mocks
         int GetVendingMachineCoinValueInCents();
         string GetVendingMachineDisplay();
         bool Dispense(Products product);
-        Change LatestChangeMade();
+        bool Dispense(Products product, out Change change);
+
+        //Change LatestChangeMade();
         Change GetChangeInVendingMachine();
         bool ReturnChangeInVendingMachine();
         void SetExactChange(bool setting);
@@ -72,10 +74,16 @@ namespace VendingMachineUnitTests.Mocks
             return this._dependency.Dispense(product);
         }
 
-        public Change LatestChangeMade()
+        public bool Dispense(Products product, out Change change)
         {
-            return this._dependency.LatestChangeMade();
+            return this._dependency.Dispense(product, out change);
         }
+
+
+        //public Change LatestChangeMade()
+        //{
+        //    return this._dependency.LatestChangeMade();
+        //}
 
         public Change GetChangeInVendingMachine()
         {
@@ -155,10 +163,16 @@ namespace VendingMachineUnitTests.Mocks
             return machine.Dispense(product);
         }
 
-        public Change LatestChangeMade()
+        public bool Dispense(Products product, out Change change)
         {
-            return machine.LatestChangeMade;
+            return machine.Dispense(product, out change);
         }
+
+
+        //public Change LatestChangeMade()
+        //{
+        //    return machine.LatestChangeMade;
+        //}
 
         public Change GetChangeInVendingMachine()
         {

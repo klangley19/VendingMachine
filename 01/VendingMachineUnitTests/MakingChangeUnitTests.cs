@@ -281,6 +281,7 @@ namespace VendingMachineUnitTests
             MockVendingMachineDependency dependency = new MockVendingMachineDependency();
             VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
 
+            Change c = new Change();
             bool result1, result2, result3, result4;
             bool productDispensed;
 
@@ -289,8 +290,7 @@ namespace VendingMachineUnitTests
             result3 = dependentClass.AddQuarterToVendingMachine();
             result4 = dependentClass.AddQuarterToVendingMachine();
 
-            productDispensed = dependentClass.Dispense(Products.Cola);
-            c = dependentClass.LatestChangeMade();
+            productDispensed = dependentClass.Dispense(Products.Cola, out c);
 
             Assert.AreEqual(0, c.Nickels);
             Assert.AreEqual(0, c.Dimes);
@@ -304,6 +304,7 @@ namespace VendingMachineUnitTests
             MockVendingMachineDependency dependency = new MockVendingMachineDependency();
             VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
 
+            Change c = new Change();
             bool result1, result2, result3, result4;
             bool productDispensed;
 
@@ -312,8 +313,7 @@ namespace VendingMachineUnitTests
             result3 = dependentClass.AddQuarterToVendingMachine();
             result4 = dependentClass.AddQuarterToVendingMachine();
 
-            productDispensed = dependentClass.Dispense(Products.Candy);
-            c = dependentClass.LatestChangeMade();
+            productDispensed = dependentClass.Dispense(Products.Candy, out c);
 
             Assert.AreEqual(0, c.Nickels);
             Assert.AreEqual(1, c.Dimes);
@@ -328,6 +328,7 @@ namespace VendingMachineUnitTests
             MockVendingMachineDependency dependency = new MockVendingMachineDependency();
             VendingMachineDependentClass dependentClass = new VendingMachineDependentClass(dependency);
 
+            Change c = new Change();
             bool result1, result2, result3, result4, result5;
             bool productDispensed;
 
@@ -337,8 +338,7 @@ namespace VendingMachineUnitTests
             result4 = dependentClass.AddDimeToVendingMachine();
             result5 = dependentClass.AddNickelToVendingMachine();
 
-            productDispensed = dependentClass.Dispense(Products.Chips);
-            c = dependentClass.LatestChangeMade();
+            productDispensed = dependentClass.Dispense(Products.Chips, out c);
 
             Assert.AreEqual(1, c.Nickels);
             Assert.AreEqual(1, c.Dimes);

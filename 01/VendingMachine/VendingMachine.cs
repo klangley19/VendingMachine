@@ -60,9 +60,11 @@ namespace VendingMachine
         private Inventory Inventory;
 
         private Change ChangeInMachine = new Change();
-        private Change LatestChangeMadeAfterPurchase = new Change();
         private string DisplayMessage = "INSERT COIN";
         private bool RequireExactChange = false;
+
+        private Change LatestChangeMadeAfterPurchase = new Change();
+
 
         //public class properties
         #region public Change ChangeInVendingMachine
@@ -71,7 +73,6 @@ namespace VendingMachine
             get { return this.ChangeInMachine; }
         }
         #endregion
-
 
         #region public int DepositedValueInMachine
         public int DepositedValueInMachine
@@ -82,6 +83,7 @@ namespace VendingMachine
             }
         }
         #endregion
+
 
         #region public string Display
         public string Display
@@ -114,23 +116,6 @@ namespace VendingMachine
                     this.DisplayMessage = "INSERT COIN";
                 }
 
-            }
-        }
-        #endregion
-
-
-
-        #region public Change LatestChangeMade
-        //this property is here for testing, otherwise it is not needed
-        public Change LatestChangeMade
-        {
-            get
-            {
-                return this.LatestChangeMadeAfterPurchase;
-            }
-            private set
-            {
-                this.LatestChangeMadeAfterPurchase = value;
             }
         }
         #endregion
@@ -211,6 +196,15 @@ namespace VendingMachine
                 return false;
             }
 
+        }
+        #endregion
+
+        #region public bool Dispense(Products product, out Change change)
+        public bool Dispense(Products product, out Change change)
+        {
+            bool returnValue = this.Dispense(product);
+            change = this.LatestChangeMadeAfterPurchase;
+            return returnValue;
         }
         #endregion
 
@@ -295,7 +289,7 @@ namespace VendingMachine
             //dispense ... c.Dimes
             //dispense ... c.Nickels
 
-            this.LatestChangeMade = c;
+            this.LatestChangeMadeAfterPurchase = c;
             this.ChangeInMachine = new Change();
             return;
         }
