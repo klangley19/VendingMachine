@@ -79,7 +79,7 @@ namespace VendingMachine
             }
             else
             {
-                throw new ArgumentOutOfRangeException("The Dispense method was called without finding a matching product!");
+                throw new ArgumentOutOfRangeException("The GetTheCostForAProduct() method was called without finding a matching product!");
             }
 
         }
