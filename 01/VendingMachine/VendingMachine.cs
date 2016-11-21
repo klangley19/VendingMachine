@@ -203,7 +203,14 @@ namespace VendingMachine
         public bool Dispense(Products product, out Change change)
         {
             bool returnValue = this.Dispense(product);
-            change = this.LatestChangeMadeAfterPurchase;
+            if (returnValue)
+            {
+                change = this.LatestChangeMadeAfterPurchase;
+            }
+            else
+            {
+                change = new Change();
+            }
             return returnValue;
         }
         #endregion
